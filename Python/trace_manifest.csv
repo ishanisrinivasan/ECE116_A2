@@ -1,0 +1,8 @@
+trace_id,expected_command,expected_event_count
+single_go,go,1
+single_up,up,1
+single_stop,stop,1
+unknown_word,none,0
+two_go,go,2
+class_shift_one_utterance,go,1
+maximum_latch_recovery,go,2

@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="360" viewBox="0 0 1200 360" role="img" aria-labelledby="title desc">
+  <title id="title">A2 component pipeline</title>
+  <desc id="desc">PDM microphone audio passes through a provided model to a score vector, then through a student-implemented decision policy to the unchanged A1 timer and visible outputs.</desc>
+  <rect width="1200" height="360" fill="#f7f8fa"/>
+  <g font-family="Arial, sans-serif" text-anchor="middle" fill="#17202a">
+    <g stroke="#44546a" stroke-width="3" fill="#ffffff">
+      <rect x="35" y="115" width="180" height="110" rx="6"/>
+      <rect x="270" y="115" width="180" height="110" rx="6"/>
+      <rect x="505" y="115" width="180" height="110" rx="6"/>
+      <rect x="740" y="115" width="180" height="110" rx="6"/>
+      <rect x="975" y="115" width="190" height="110" rx="6"/>
+    </g>
+    <g font-size="22" font-weight="700">
+      <text x="125" y="158">PDM mic</text>
+      <text x="360" y="158">Provided model</text>
+      <text x="595" y="150">Score vector</text>
+      <text x="830" y="150">Decision policy</text>
+      <text x="1070" y="150">A1 timer</text>
+    </g>
+    <g font-size="18" fill="#44546a">
+      <text x="125" y="190">16 kHz PCM</text>
+      <text x="360" y="190">log-mel + MLP</text>
+      <text x="595" y="182">go / up / stop</text>
+      <text x="595" y="207">/ unknown</text>
+      <text x="830" y="182">threshold +</text>
+      <text x="830" y="207">release / latch</text>
+      <text x="1070" y="182">unchanged FSM</text>
+      <text x="1070" y="207">LEDs + Serial</text>
+    </g>
+    <g stroke="#247ba0" stroke-width="5" fill="none">
+      <path d="M215 170 H260"/>
+      <path d="M450 170 H495"/>
+      <path d="M685 170 H730"/>
+      <path d="M920 170 H965"/>
+    </g>
+    <g fill="#247ba0">
+      <path d="M260 170 l-14 -9 v18 z"/>
+      <path d="M495 170 l-14 -9 v18 z"/>
+      <path d="M730 170 l-14 -9 v18 z"/>
+      <path d="M965 170 l-14 -9 v18 z"/>
+    </g>
+    <text x="830" y="78" font-size="20" font-weight="700" fill="#b03a2e">Student-owned boundary</text>
+    <path d="M740 92 H920" stroke="#b03a2e" stroke-width="4"/>
+  </g>
+</svg>
