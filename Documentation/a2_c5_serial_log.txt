@@ -1,0 +1,734 @@
+# A2 C5 integrated-system log. Challenge_2.ino on XIAO ESP32-S3 Sense, Serial Monitor at 115200 baud.
+# Lines starting with # were added to label runs. Everything else is copied unchanged from the Serial Monitor.
+# Each run starts at a board reset, so window and captured_ms restart at every run.
+
+# Run A: C5 required sequence (steps 1-7).
+A2 Challenge: voice commands feed the A1 countdown timer
+commands: up=add 10 seconds, go=start, stop=cancel
+policy accept=0.90 release=0.55 minimum_latch_ms=1000 maximum_latch_ms=1500
+status_ms=18 mode=STANDBY
+SCORES window=1 captured_ms=1038 rms=0.020959 go=0.7888 up=0.0393 stop=0.1096 unknown=0.0623 event=NONE dsp_ms=293 cls_ms=5
+SCORES window=2 captured_ms=5537 rms=0.002773 go=0.5176 up=0.0932 stop=0.2906 unknown=0.0986 event=NONE mode=STANDBY dsp_ms=294 cls_ms=5
+SCORES window=3 captured_ms=6034 rms=0.006067 go=0.6129 up=0.0596 stop=0.2249 unknown=0.1026 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=4 captured_ms=6289 rms=0.004790 go=0.5099 up=0.0684 stop=0.3078 unknown=0.1139 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=5 captured_ms=6544 rms=0.002423 go=0.3850 up=0.0941 stop=0.3755 unknown=0.1454 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=6 captured_ms=6784 rms=0.003148 go=0.4912 up=0.1059 stop=0.3111 unknown=0.0918 event=NONE mode=STANDBY dsp_ms=297 cls_ms=5
+SCORES window=7 captured_ms=7294 rms=0.006872 go=0.4196 up=0.1353 stop=0.2195 unknown=0.2256 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=8 captured_ms=7534 rms=0.005031 go=0.3096 up=0.0404 stop=0.2939 unknown=0.3561 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=9 captured_ms=7789 rms=0.006813 go=0.1000 up=0.0369 stop=0.0881 unknown=0.7751 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=10 captured_ms=8044 rms=0.006828 go=0.0307 up=0.0340 stop=0.8745 unknown=0.0608 event=NONE mode=STANDBY dsp_ms=297 cls_ms=5
+SCORES window=11 captured_ms=8539 rms=0.002941 go=0.2096 up=0.0197 stop=0.6748 unknown=0.0959 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=12 captured_ms=8794 rms=0.002682 go=0.7836 up=0.0900 stop=0.0365 unknown=0.0898 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=13 captured_ms=9034 rms=0.002210 go=0.5378 up=0.0691 stop=0.3151 unknown=0.0780 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=14 captured_ms=9289 rms=0.001874 go=0.4759 up=0.1205 stop=0.2627 unknown=0.1409 event=NONE mode=STANDBY dsp_ms=294 cls_ms=6
+SCORES window=15 captured_ms=9544 rms=0.001665 go=0.6412 up=0.1205 stop=0.1691 unknown=0.0691 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=16 captured_ms=10039 rms=0.001746 go=0.5461 up=0.0886 stop=0.2182 unknown=0.1471 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=17 captured_ms=10294 rms=0.001066 go=0.5458 up=0.0689 stop=0.1970 unknown=0.1882 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=18 captured_ms=10534 rms=0.000818 go=0.4840 up=0.0907 stop=0.2393 unknown=0.1861 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=19 captured_ms=10789 rms=0.000986 go=0.5559 up=0.0705 stop=0.1840 unknown=0.1897 event=NONE mode=STANDBY dsp_ms=297 cls_ms=5
+SCORES window=20 captured_ms=11284 rms=0.001562 go=0.4002 up=0.1134 stop=0.3868 unknown=0.0997 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=21 captured_ms=11539 rms=0.002334 go=0.4542 up=0.1170 stop=0.2675 unknown=0.1613 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=22 captured_ms=11794 rms=0.002456 go=0.5598 up=0.0967 stop=0.2500 unknown=0.0935 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=23 captured_ms=12034 rms=0.002294 go=0.5946 up=0.0732 stop=0.2329 unknown=0.0993 event=NONE mode=STANDBY dsp_ms=295 cls_ms=6
+SCORES window=24 captured_ms=12289 rms=0.002065 go=0.4977 up=0.0775 stop=0.2802 unknown=0.1446 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=25 captured_ms=12784 rms=0.002335 go=0.6456 up=0.0649 stop=0.1555 unknown=0.1340 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=26 captured_ms=13039 rms=0.002486 go=0.4679 up=0.0639 stop=0.3042 unknown=0.1640 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=27 captured_ms=13294 rms=0.003173 go=0.5722 up=0.0727 stop=0.2129 unknown=0.1421 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=28 captured_ms=13534 rms=0.005007 go=0.5990 up=0.0628 stop=0.2407 unknown=0.0976 event=NONE mode=STANDBY dsp_ms=295 cls_ms=5
+SCORES window=29 captured_ms=14044 rms=0.013391 go=0.6331 up=0.0566 stop=0.2541 unknown=0.0562 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=30 captured_ms=14284 rms=0.017217 go=0.6012 up=0.0580 stop=0.2723 unknown=0.0685 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=31 captured_ms=14539 rms=0.017543 go=0.6548 up=0.0484 stop=0.1971 unknown=0.0996 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=32 captured_ms=14794 rms=0.007066 go=0.7329 up=0.0417 stop=0.1486 unknown=0.0768 event=NONE mode=STANDBY dsp_ms=296 cls_ms=5
+SCORES window=33 captured_ms=15289 rms=0.006068 go=0.6285 up=0.0651 stop=0.1641 unknown=0.1423 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=34 captured_ms=15544 rms=0.004672 go=0.7367 up=0.0455 stop=0.1429 unknown=0.0749 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=35 captured_ms=15784 rms=0.007077 go=0.2611 up=0.1604 stop=0.3735 unknown=0.2050 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=36 captured_ms=16039 rms=0.007513 go=0.0478 up=0.8228 stop=0.1222 unknown=0.0071 event=NONE mode=STANDBY dsp_ms=296 cls_ms=5
+SCORES window=37 captured_ms=16534 rms=0.007965 go=0.0715 up=0.3811 stop=0.4935 unknown=0.0539 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=38 captured_ms=16789 rms=0.006546 go=0.4288 up=0.1184 stop=0.3509 unknown=0.1019 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=39 captured_ms=17044 rms=0.002775 go=0.6414 up=0.0621 stop=0.1851 unknown=0.1114 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=40 captured_ms=17284 rms=0.007112 go=0.2621 up=0.2040 stop=0.3352 unknown=0.1987 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+event=UP
+status_ms=18075 mode=ADDING seconds=10
+SCORES window=41 captured_ms=17539 rms=0.007176 go=0.0063 up=0.9317 stop=0.0600 unknown=0.0019 event=UP mode=ADDING dsp_ms=296 cls_ms=5
+SCORES window=42 captured_ms=18034 rms=0.007590 go=0.1022 up=0.5269 stop=0.2821 unknown=0.0888 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=43 captured_ms=18289 rms=0.004254 go=0.3115 up=0.1840 stop=0.3903 unknown=0.1142 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=44 captured_ms=18544 rms=0.015819 go=0.7848 up=0.0352 stop=0.1114 unknown=0.0686 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=45 captured_ms=18784 rms=0.016886 go=0.5733 up=0.0721 stop=0.2704 unknown=0.0842 event=NONE mode=ADDING dsp_ms=297 cls_ms=5
+SCORES window=46 captured_ms=19294 rms=0.021741 go=0.7260 up=0.0361 stop=0.1651 unknown=0.0729 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=47 captured_ms=19534 rms=0.012055 go=0.5863 up=0.0472 stop=0.2629 unknown=0.1037 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=48 captured_ms=19789 rms=0.003576 go=0.6238 up=0.0551 stop=0.2024 unknown=0.1186 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=49 captured_ms=20044 rms=0.003932 go=0.5990 up=0.0531 stop=0.2693 unknown=0.0786 event=NONE mode=ADDING dsp_ms=294 cls_ms=6
+SCORES window=50 captured_ms=20284 rms=0.006991 go=0.5532 up=0.1772 stop=0.1643 unknown=0.1052 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+event=UP
+status_ms=21147 mode=ADDING seconds=20
+SCORES window=51 captured_ms=20794 rms=0.006795 go=0.0126 up=0.9484 stop=0.0346 unknown=0.0045 event=UP mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=52 captured_ms=21034 rms=0.007100 go=0.0640 up=0.7497 stop=0.1356 unknown=0.0506 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=53 captured_ms=21289 rms=0.008056 go=0.1873 up=0.2236 stop=0.5346 unknown=0.0546 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=54 captured_ms=21544 rms=0.010374 go=0.7441 up=0.0663 stop=0.1233 unknown=0.0662 event=NONE mode=ADDING dsp_ms=296 cls_ms=5
+SCORES window=55 captured_ms=22039 rms=0.006046 go=0.7000 up=0.0432 stop=0.1677 unknown=0.0890 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=56 captured_ms=22294 rms=0.005514 go=0.5650 up=0.0556 stop=0.2661 unknown=0.1133 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=57 captured_ms=22534 rms=0.004723 go=0.6212 up=0.0704 stop=0.2236 unknown=0.0849 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=58 captured_ms=22789 rms=0.006195 go=0.7424 up=0.0415 stop=0.1391 unknown=0.0769 event=NONE mode=ADDING dsp_ms=297 cls_ms=5
+SCORES window=59 captured_ms=23284 rms=0.004346 go=0.5677 up=0.0638 stop=0.2464 unknown=0.1222 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=60 captured_ms=23539 rms=0.010183 go=0.7481 up=0.0401 stop=0.1486 unknown=0.0632 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=61 captured_ms=23794 rms=0.011631 go=0.6358 up=0.0340 stop=0.1021 unknown=0.2281 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+event=GO
+status_ms=24528 mode=COUNTDOWN seconds=20
+SCORES window=62 captured_ms=24034 rms=0.010421 go=0.9444 up=0.0021 stop=0.0010 unknown=0.0524 event=GO mode=COUNTDOWN dsp_ms=293 cls_ms=5
+SCORES window=63 captured_ms=24289 rms=0.008437 go=0.9657 up=0.0047 stop=0.0004 unknown=0.0291 event=NONE mode=COUNTDOWN dsp_ms=294 cls_ms=5
+SCORES window=64 captured_ms=24784 rms=0.007232 go=0.1485 up=0.6506 stop=0.0957 unknown=0.1053 event=NONE mode=COUNTDOWN dsp_ms=293 cls_ms=5
+SCORES window=65 captured_ms=25039 rms=0.006540 go=0.6165 up=0.0718 stop=0.2182 unknown=0.0935 event=NONE mode=COUNTDOWN dsp_ms=293 cls_ms=5
+SCORES window=66 captured_ms=25294 rms=0.005004 go=0.5625 up=0.0550 stop=0.2703 unknown=0.1122 event=NONE mode=COUNTDOWN dsp_ms=293 cls_ms=5
+status_ms=25757 mode=COUNTDOWN seconds=19
+SCORES window=67 captured_ms=25534 rms=0.001835 go=0.5368 up=0.0848 stop=0.2300 unknown=0.1484 event=NONE mode=COUNTDOWN dsp_ms=297 cls_ms=5
+SCORES window=68 captured_ms=26044 rms=0.001588 go=0.4984 up=0.0786 stop=0.3015 unknown=0.1215 event=NONE mode=COUNTDOWN dsp_ms=293 cls_ms=5
+SCORES window=69 captured_ms=26284 rms=0.002045 go=0.5589 up=0.0754 stop=0.2626 unknown=0.1031 event=NONE mode=COUNTDOWN dsp_ms=293 cls_ms=5
+status_ms=26680 mode=COUNTDOWN seconds=18
+SCORES window=70 captured_ms=26539 rms=0.002031 go=0.6309 up=0.0679 stop=0.1757 unknown=0.1254 event=NONE mode=COUNTDOWN dsp_ms=293 cls_ms=5
+SCORES window=71 captured_ms=26794 rms=0.002109 go=0.6056 up=0.0787 stop=0.2007 unknown=0.1149 event=NONE mode=COUNTDOWN dsp_ms=297 cls_ms=5
+SCORES window=72 captured_ms=27289 rms=0.003757 go=0.5466 up=0.0915 stop=0.2375 unknown=0.1245 event=NONE mode=COUNTDOWN dsp_ms=293 cls_ms=5
+status_ms=27604 mode=COUNTDOWN seconds=17
+SCORES window=73 captured_ms=27544 rms=0.003752 go=0.4589 up=0.0839 stop=0.3511 unknown=0.1061 event=NONE mode=COUNTDOWN dsp_ms=293 cls_ms=5
+SCORES window=74 captured_ms=27784 rms=0.002694 go=0.3137 up=0.0938 stop=0.5048 unknown=0.0876 event=NONE mode=COUNTDOWN dsp_ms=293 cls_ms=5
+SCORES window=75 captured_ms=28039 rms=0.003397 go=0.6141 up=0.0771 stop=0.1933 unknown=0.1155 event=NONE mode=COUNTDOWN dsp_ms=293 cls_ms=6
+SCORES window=76 captured_ms=28294 rms=0.003186 go=0.5967 up=0.0555 stop=0.2623 unknown=0.0855 event=NONE mode=COUNTDOWN dsp_ms=293 cls_ms=5
+status_ms=28833 mode=COUNTDOWN seconds=16
+SCORES window=77 captured_ms=28789 rms=0.002681 go=0.6353 up=0.0442 stop=0.2074 unknown=0.1131 event=NONE mode=COUNTDOWN dsp_ms=293 cls_ms=5
+SCORES window=78 captured_ms=29044 rms=0.004221 go=0.7326 up=0.0452 stop=0.1380 unknown=0.0842 event=NONE mode=COUNTDOWN dsp_ms=293 cls_ms=5
+SCORES window=79 captured_ms=29284 rms=0.006361 go=0.7122 up=0.0483 stop=0.1566 unknown=0.0829 event=NONE mode=COUNTDOWN dsp_ms=293 cls_ms=5
+status_ms=29752 mode=COUNTDOWN seconds=15
+SCORES window=80 captured_ms=29539 rms=0.005286 go=0.5527 up=0.0778 stop=0.2650 unknown=0.1044 event=NONE mode=COUNTDOWN dsp_ms=297 cls_ms=5
+SCORES window=81 captured_ms=30034 rms=0.016890 go=0.7052 up=0.0507 stop=0.1791 unknown=0.0650 event=NONE mode=COUNTDOWN dsp_ms=293 cls_ms=5
+SCORES window=82 captured_ms=30289 rms=0.013571 go=0.6482 up=0.0492 stop=0.2306 unknown=0.0720 event=NONE mode=COUNTDOWN dsp_ms=293 cls_ms=5
+status_ms=30676 mode=COUNTDOWN seconds=14
+SCORES window=83 captured_ms=30544 rms=0.011060 go=0.7646 up=0.0391 stop=0.1234 unknown=0.0729 event=NONE mode=COUNTDOWN dsp_ms=293 cls_ms=5
+SCORES window=84 captured_ms=30784 rms=0.010923 go=0.6757 up=0.0478 stop=0.2078 unknown=0.0686 event=NONE mode=COUNTDOWN dsp_ms=295 cls_ms=6
+SCORES window=85 captured_ms=31039 rms=0.006457 go=0.5874 up=0.0675 stop=0.2523 unknown=0.0928 event=NONE mode=COUNTDOWN dsp_ms=293 cls_ms=5
+status_ms=31599 mode=COUNTDOWN seconds=13
+SCORES window=86 captured_ms=31534 rms=0.009897 go=0.7314 up=0.0469 stop=0.1622 unknown=0.0595 event=NONE mode=COUNTDOWN dsp_ms=293 cls_ms=5
+SCORES window=87 captured_ms=31789 rms=0.010593 go=0.6781 up=0.0439 stop=0.2165 unknown=0.0615 event=NONE mode=COUNTDOWN dsp_ms=293 cls_ms=5
+SCORES window=88 captured_ms=32044 rms=0.006445 go=0.6246 up=0.0492 stop=0.2255 unknown=0.1007 event=NONE mode=COUNTDOWN dsp_ms=293 cls_ms=5
+SCORES window=89 captured_ms=32284 rms=0.005880 go=0.6642 up=0.0470 stop=0.2104 unknown=0.0784 event=NONE mode=COUNTDOWN dsp_ms=295 cls_ms=5
+status_ms=32829 mode=COUNTDOWN seconds=12
+SCORES window=90 captured_ms=32794 rms=0.005631 go=0.5709 up=0.0260 stop=0.0668 unknown=0.3363 event=NONE mode=COUNTDOWN dsp_ms=293 cls_ms=5
+SCORES window=91 captured_ms=33034 rms=0.006307 go=0.7868 up=0.0027 stop=0.0073 unknown=0.2033 event=NONE mode=COUNTDOWN dsp_ms=293 cls_ms=5
+SCORES window=92 captured_ms=33289 rms=0.006943 go=0.1541 up=0.0103 stop=0.0096 unknown=0.8260 event=NONE mode=COUNTDOWN dsp_ms=293 cls_ms=5
+status_ms=33750 mode=COUNTDOWN seconds=11
+SCORES window=93 captured_ms=33544 rms=0.006405 go=0.2530 up=0.0674 stop=0.0072 unknown=0.6724 event=NONE mode=COUNTDOWN dsp_ms=297 cls_ms=5
+SCORES window=94 captured_ms=34039 rms=0.007615 go=0.0779 up=0.1461 stop=0.0310 unknown=0.7450 event=NONE mode=COUNTDOWN dsp_ms=293 cls_ms=5
+SCORES window=95 captured_ms=34294 rms=0.006567 go=0.3179 up=0.0386 stop=0.2142 unknown=0.4293 event=NONE mode=COUNTDOWN dsp_ms=293 cls_ms=5
+status_ms=34673 mode=COUNTDOWN seconds=10
+SCORES window=96 captured_ms=34534 rms=0.010820 go=0.4770 up=0.0169 stop=0.4055 unknown=0.1006 event=NONE mode=COUNTDOWN dsp_ms=293 cls_ms=5
+SCORES window=97 captured_ms=34789 rms=0.012204 go=0.4600 up=0.0666 stop=0.2883 unknown=0.1851 event=NONE mode=COUNTDOWN dsp_ms=296 cls_ms=5
+SCORES window=98 captured_ms=35284 rms=0.007456 go=0.7711 up=0.0401 stop=0.1028 unknown=0.0859 event=NONE mode=COUNTDOWN dsp_ms=293 cls_ms=5
+status_ms=35597 mode=COUNTDOWN seconds=9
+SCORES window=99 captured_ms=35539 rms=0.007764 go=0.5113 up=0.1018 stop=0.1691 unknown=0.2178 event=NONE mode=COUNTDOWN dsp_ms=293 cls_ms=5
+SCORES window=100 captured_ms=35794 rms=0.009381 go=0.3567 up=0.0642 stop=0.2297 unknown=0.3495 event=NONE mode=COUNTDOWN dsp_ms=293 cls_ms=5
+event=STOP
+status_ms=36516 mode=STANDBY
+SCORES window=101 captured_ms=36034 rms=0.011005 go=0.0488 up=0.0297 stop=0.9127 unknown=0.0087 event=STOP mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=102 captured_ms=36289 rms=0.013820 go=0.0028 up=0.0571 stop=0.9398 unknown=0.0002 event=NONE mode=STANDBY dsp_ms=296 cls_ms=5
+SCORES window=103 captured_ms=36784 rms=0.010542 go=0.3506 up=0.4502 stop=0.0954 unknown=0.1038 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=104 captured_ms=37039 rms=0.008386 go=0.4099 up=0.0618 stop=0.3840 unknown=0.1443 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=105 captured_ms=37294 rms=0.008486 go=0.6626 up=0.0528 stop=0.1798 unknown=0.1048 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=106 captured_ms=37534 rms=0.008492 go=0.7045 up=0.0555 stop=0.1651 unknown=0.0749 event=NONE mode=STANDBY dsp_ms=297 cls_ms=5
+SCORES window=107 captured_ms=38044 rms=0.009442 go=0.6787 up=0.0463 stop=0.1739 unknown=0.1011 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=108 captured_ms=38284 rms=0.010666 go=0.7634 up=0.0393 stop=0.1288 unknown=0.0685 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=109 captured_ms=38539 rms=0.012855 go=0.1847 up=0.2045 stop=0.4579 unknown=0.1530 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=110 captured_ms=38794 rms=0.010314 go=0.3229 up=0.4598 stop=0.2101 unknown=0.0071 event=NONE mode=STANDBY dsp_ms=295 cls_ms=6
+event=UP
+status_ms=39593 mode=ADDING seconds=10
+SCORES window=111 captured_ms=39034 rms=0.013236 go=0.0025 up=0.9915 stop=0.0049 unknown=0.0011 event=UP mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=112 captured_ms=39544 rms=0.016888 go=0.3247 up=0.2589 stop=0.3701 unknown=0.0463 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=113 captured_ms=39784 rms=0.016640 go=0.7662 up=0.0737 stop=0.1046 unknown=0.0555 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=114 captured_ms=40039 rms=0.018829 go=0.7388 up=0.0373 stop=0.1595 unknown=0.0644 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=115 captured_ms=40294 rms=0.015587 go=0.6647 up=0.0360 stop=0.2232 unknown=0.0762 event=NONE mode=ADDING dsp_ms=295 cls_ms=5
+SCORES window=116 captured_ms=40789 rms=0.002478 go=0.5371 up=0.0583 stop=0.2189 unknown=0.1857 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=117 captured_ms=41044 rms=0.001753 go=0.6009 up=0.0639 stop=0.1716 unknown=0.1637 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=118 captured_ms=41284 rms=0.001203 go=0.4948 up=0.0880 stop=0.2160 unknown=0.2012 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=119 captured_ms=41539 rms=0.001272 go=0.4508 up=0.0843 stop=0.2815 unknown=0.1834 event=NONE mode=ADDING dsp_ms=296 cls_ms=5
+SCORES window=120 captured_ms=42034 rms=0.002733 go=0.5678 up=0.0720 stop=0.2498 unknown=0.1103 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=121 captured_ms=42289 rms=0.003386 go=0.3652 up=0.0939 stop=0.3117 unknown=0.2291 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+event=GO
+status_ms=42973 mode=COUNTDOWN seconds=10
+SCORES window=122 captured_ms=42544 rms=0.007761 go=0.9319 up=0.0016 stop=0.0018 unknown=0.0648 event=GO mode=COUNTDOWN dsp_ms=293 cls_ms=5
+SCORES window=123 captured_ms=42784 rms=0.007740 go=0.9776 up=0.0039 stop=0.0007 unknown=0.0179 event=NONE mode=COUNTDOWN dsp_ms=293 cls_ms=6
+SCORES window=124 captured_ms=43039 rms=0.008249 go=0.9651 up=0.0099 stop=0.0013 unknown=0.0238 event=NONE mode=COUNTDOWN dsp_ms=294 cls_ms=5
+SCORES window=125 captured_ms=43534 rms=0.017645 go=0.2223 up=0.3925 stop=0.3501 unknown=0.0351 event=NONE mode=COUNTDOWN dsp_ms=293 cls_ms=5
+SCORES window=126 captured_ms=43789 rms=0.026078 go=0.7273 up=0.0568 stop=0.1746 unknown=0.0412 event=NONE mode=COUNTDOWN dsp_ms=293 cls_ms=5
+status_ms=44203 mode=COUNTDOWN seconds=9
+SCORES window=127 captured_ms=44044 rms=0.034745 go=0.7444 up=0.0692 stop=0.1386 unknown=0.0477 event=NONE mode=COUNTDOWN dsp_ms=293 cls_ms=5
+SCORES window=128 captured_ms=44284 rms=0.038567 go=0.6783 up=0.0550 stop=0.1975 unknown=0.0692 event=NONE mode=COUNTDOWN dsp_ms=296 cls_ms=5
+SCORES window=129 captured_ms=44794 rms=0.013413 go=0.7514 up=0.0344 stop=0.1337 unknown=0.0806 event=NONE mode=COUNTDOWN dsp_ms=293 cls_ms=5
+status_ms=45126 mode=COUNTDOWN seconds=8
+SCORES window=130 captured_ms=45034 rms=0.010751 go=0.6840 up=0.0647 stop=0.1810 unknown=0.0702 event=NONE mode=COUNTDOWN dsp_ms=293 cls_ms=5
+SCORES window=131 captured_ms=45289 rms=0.007288 go=0.6251 up=0.0666 stop=0.1893 unknown=0.1190 event=NONE mode=COUNTDOWN dsp_ms=293 cls_ms=5
+SCORES window=132 captured_ms=45544 rms=0.005005 go=0.5830 up=0.0488 stop=0.2456 unknown=0.1226 event=NONE mode=COUNTDOWN dsp_ms=297 cls_ms=5
+status_ms=46050 mode=COUNTDOWN seconds=7
+SCORES window=133 captured_ms=46039 rms=0.008180 go=0.6724 up=0.0554 stop=0.2128 unknown=0.0595 event=NONE mode=COUNTDOWN dsp_ms=293 cls_ms=5
+SCORES window=134 captured_ms=46294 rms=0.009923 go=0.6799 up=0.0473 stop=0.2027 unknown=0.0701 event=NONE mode=COUNTDOWN dsp_ms=293 cls_ms=5
+SCORES window=135 captured_ms=46534 rms=0.010639 go=0.6967 up=0.0465 stop=0.1607 unknown=0.0961 event=NONE mode=COUNTDOWN dsp_ms=293 cls_ms=5
+SCORES window=136 captured_ms=46789 rms=0.004003 go=0.6079 up=0.0519 stop=0.1878 unknown=0.1523 event=NONE mode=COUNTDOWN dsp_ms=294 cls_ms=6
+status_ms=47278 mode=COUNTDOWN seconds=6
+SCORES window=137 captured_ms=47044 rms=0.001977 go=0.3491 up=0.1002 stop=0.4539 unknown=0.0968 event=NONE mode=COUNTDOWN dsp_ms=293 cls_ms=5
+SCORES window=138 captured_ms=47539 rms=0.004166 go=0.4302 up=0.0876 stop=0.2446 unknown=0.2376 event=NONE mode=COUNTDOWN dsp_ms=293 cls_ms=5
+SCORES window=139 captured_ms=47794 rms=0.006734 go=0.6444 up=0.0648 stop=0.1932 unknown=0.0976 event=NONE mode=COUNTDOWN dsp_ms=293 cls_ms=5
+status_ms=48199 mode=COUNTDOWN seconds=5
+SCORES window=140 captured_ms=48034 rms=0.009492 go=0.7343 up=0.0394 stop=0.1525 unknown=0.0737 event=NONE mode=COUNTDOWN dsp_ms=293 cls_ms=5
+SCORES window=141 captured_ms=48289 rms=0.008457 go=0.5918 up=0.0509 stop=0.2083 unknown=0.1490 event=NONE mode=COUNTDOWN dsp_ms=297 cls_ms=5
+SCORES window=142 captured_ms=48784 rms=0.005145 go=0.5650 up=0.0740 stop=0.2273 unknown=0.1336 event=NONE mode=COUNTDOWN dsp_ms=293 cls_ms=5
+status_ms=49123 mode=COUNTDOWN seconds=4
+SCORES window=143 captured_ms=49039 rms=0.007185 go=0.5868 up=0.0684 stop=0.2692 unknown=0.0756 event=NONE mode=COUNTDOWN dsp_ms=293 cls_ms=5
+SCORES window=144 captured_ms=49294 rms=0.009125 go=0.6859 up=0.0550 stop=0.1751 unknown=0.0840 event=NONE mode=COUNTDOWN dsp_ms=293 cls_ms=5
+SCORES window=145 captured_ms=49534 rms=0.006747 go=0.5738 up=0.0378 stop=0.2317 unknown=0.1567 event=NONE mode=COUNTDOWN dsp_ms=296 cls_ms=5
+status_ms=50047 mode=COUNTDOWN seconds=3
+SCORES window=146 captured_ms=50044 rms=0.003987 go=0.6086 up=0.0474 stop=0.2083 unknown=0.1357 event=NONE mode=COUNTDOWN dsp_ms=293 cls_ms=5
+SCORES window=147 captured_ms=50284 rms=0.003477 go=0.5995 up=0.0658 stop=0.2183 unknown=0.1164 event=NONE mode=COUNTDOWN dsp_ms=293 cls_ms=5
+SCORES window=148 captured_ms=50539 rms=0.003730 go=0.5437 up=0.0846 stop=0.2824 unknown=0.0894 event=NONE mode=COUNTDOWN dsp_ms=293 cls_ms=5
+SCORES window=149 captured_ms=50794 rms=0.003639 go=0.5557 up=0.0728 stop=0.2398 unknown=0.1317 event=NONE mode=COUNTDOWN dsp_ms=293 cls_ms=5
+status_ms=51273 mode=COUNTDOWN seconds=2
+SCORES window=150 captured_ms=51034 rms=0.003699 go=0.6653 up=0.0462 stop=0.1556 unknown=0.1329 event=NONE mode=COUNTDOWN dsp_ms=294 cls_ms=5
+SCORES window=151 captured_ms=51544 rms=0.004568 go=0.6509 up=0.0613 stop=0.2059 unknown=0.0819 event=NONE mode=COUNTDOWN dsp_ms=293 cls_ms=5
+SCORES window=152 captured_ms=51784 rms=0.005755 go=0.6487 up=0.0613 stop=0.1845 unknown=0.1055 event=NONE mode=COUNTDOWN dsp_ms=293 cls_ms=5
+status_ms=52195 mode=COUNTDOWN seconds=1
+SCORES window=153 captured_ms=52039 rms=0.007445 go=0.5957 up=0.0715 stop=0.2586 unknown=0.0742 event=NONE mode=COUNTDOWN dsp_ms=293 cls_ms=5
+SCORES window=154 captured_ms=52294 rms=0.007983 go=0.6532 up=0.0440 stop=0.2430 unknown=0.0598 event=NONE mode=COUNTDOWN dsp_ms=297 cls_ms=5
+SCORES window=155 captured_ms=52789 rms=0.003823 go=0.5047 up=0.0753 stop=0.3027 unknown=0.1172 event=NONE mode=COUNTDOWN dsp_ms=293 cls_ms=5
+status_ms=53119 mode=DONE
+SCORES window=156 captured_ms=53044 rms=0.010019 go=0.6734 up=0.0622 stop=0.1870 unknown=0.0775 event=NONE mode=DONE dsp_ms=293 cls_ms=5
+SCORES window=157 captured_ms=53284 rms=0.009950 go=0.5229 up=0.0714 stop=0.2779 unknown=0.1278 event=NONE mode=DONE dsp_ms=293 cls_ms=5
+SCORES window=158 captured_ms=53539 rms=0.009366 go=0.6086 up=0.0343 stop=0.2214 unknown=0.1357 event=NONE mode=DONE dsp_ms=297 cls_ms=5
+SCORES window=159 captured_ms=54034 rms=0.004736 go=0.6263 up=0.0533 stop=0.2367 unknown=0.0837 event=NONE mode=DONE dsp_ms=293 cls_ms=5
+SCORES window=160 captured_ms=54289 rms=0.010132 go=0.6771 up=0.0488 stop=0.2015 unknown=0.0726 event=NONE mode=DONE dsp_ms=293 cls_ms=5
+SCORES window=161 captured_ms=54544 rms=0.010109 go=0.5733 up=0.0553 stop=0.2603 unknown=0.1111 event=NONE mode=DONE dsp_ms=293 cls_ms=5
+SCORES window=162 captured_ms=54784 rms=0.008020 go=0.7046 up=0.0332 stop=0.1653 unknown=0.0968 event=NONE mode=DONE dsp_ms=293 cls_ms=5
+status_ms=55270 mode=STANDBY
+SCORES window=163 captured_ms=55039 rms=0.009335 go=0.6481 up=0.0506 stop=0.2376 unknown=0.0637 event=NONE mode=STANDBY dsp_ms=296 cls_ms=5
+SCORES window=164 captured_ms=55534 rms=0.010653 go=0.7236 up=0.0356 stop=0.1617 unknown=0.0791 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=165 captured_ms=55789 rms=0.010680 go=0.7107 up=0.0542 stop=0.1489 unknown=0.0862 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=166 captured_ms=56044 rms=0.010068 go=0.6227 up=0.0628 stop=0.2317 unknown=0.0828 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=167 captured_ms=56284 rms=0.007833 go=0.6844 up=0.0487 stop=0.1811 unknown=0.0858 event=NONE mode=STANDBY dsp_ms=296 cls_ms=5
+SCORES window=168 captured_ms=56794 rms=0.014602 go=0.7788 up=0.0390 stop=0.1217 unknown=0.0605 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=169 captured_ms=57034 rms=0.022165 go=0.5361 up=0.0943 stop=0.3190 unknown=0.0506 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=170 captured_ms=57289 rms=0.026023 go=0.4220 up=0.0986 stop=0.4062 unknown=0.0733 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=171 captured_ms=57544 rms=0.025901 go=0.8017 up=0.0342 stop=0.1239 unknown=0.0402 event=NONE mode=STANDBY dsp_ms=296 cls_ms=5
+SCORES window=172 captured_ms=58039 rms=0.007552 go=0.4769 up=0.0771 stop=0.3427 unknown=0.1033 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=173 captured_ms=58294 rms=0.004247 go=0.6024 up=0.0559 stop=0.2478 unknown=0.0939 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=174 captured_ms=58535 rms=0.005703 go=0.6497 up=0.0516 stop=0.2249 unknown=0.0738 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=175 captured_ms=58789 rms=0.004757 go=0.6149 up=0.0698 stop=0.2323 unknown=0.0830 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=176 captured_ms=59044 rms=0.004332 go=0.6192 up=0.0613 stop=0.2253 unknown=0.0941 event=NONE mode=STANDBY dsp_ms=294 cls_ms=5
+SCORES window=177 captured_ms=59539 rms=0.003239 go=0.5596 up=0.1020 stop=0.2288 unknown=0.1096 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=178 captured_ms=59794 rms=0.003199 go=0.5635 up=0.0705 stop=0.2546 unknown=0.1114 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=179 captured_ms=60034 rms=0.003446 go=0.6716 up=0.0511 stop=0.1492 unknown=0.1280 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=180 captured_ms=60289 rms=0.004080 go=0.6777 up=0.0557 stop=0.1530 unknown=0.1136 event=NONE mode=STANDBY dsp_ms=297 cls_ms=5
+SCORES window=181 captured_ms=60784 rms=0.011928 go=0.5905 up=0.0682 stop=0.2571 unknown=0.0841 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=182 captured_ms=61039 rms=0.014382 go=0.5503 up=0.0861 stop=0.2807 unknown=0.0829 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=183 captured_ms=61294 rms=0.017845 go=0.7717 up=0.0401 stop=0.1325 unknown=0.0557 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=184 captured_ms=61534 rms=0.017543 go=0.6014 up=0.0606 stop=0.2523 unknown=0.0857 event=NONE mode=STANDBY dsp_ms=293 cls_ms=6
+SCORES window=185 captured_ms=61789 rms=0.011170 go=0.6894 up=0.0399 stop=0.2086 unknown=0.0622 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=186 captured_ms=62284 rms=0.016728 go=0.7652 up=0.0505 stop=0.1015 unknown=0.0827 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=187 captured_ms=62539 rms=0.011850 go=0.6501 up=0.0600 stop=0.2322 unknown=0.0577 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=188 captured_ms=62794 rms=0.008933 go=0.5783 up=0.0561 stop=0.2635 unknown=0.1021 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=189 captured_ms=63034 rms=0.009550 go=0.7176 up=0.0249 stop=0.1927 unknown=0.0648 event=NONE mode=STANDBY dsp_ms=296 cls_ms=5
+SCORES window=190 captured_ms=63544 rms=0.008878 go=0.5930 up=0.0623 stop=0.2190 unknown=0.1257 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=191 captured_ms=63784 rms=0.008350 go=0.6727 up=0.0508 stop=0.2028 unknown=0.0737 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=192 captured_ms=64039 rms=0.008808 go=0.6064 up=0.0443 stop=0.2283 unknown=0.1209 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=193 captured_ms=64294 rms=0.008127 go=0.7221 up=0.0313 stop=0.1556 unknown=0.0910 event=NONE mode=STANDBY dsp_ms=297 cls_ms=5
+SCORES window=194 captured_ms=64790 rms=0.011411 go=0.7870 up=0.0381 stop=0.1118 unknown=0.0631 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=195 captured_ms=65044 rms=0.014082 go=0.5870 up=0.0739 stop=0.1870 unknown=0.1522 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=196 captured_ms=65284 rms=0.013614 go=0.0675 up=0.0385 stop=0.8897 unknown=0.0044 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=197 captured_ms=65539 rms=0.013545 go=0.0122 up=0.5829 stop=0.4043 unknown=0.0006 event=NONE mode=STANDBY dsp_ms=295 cls_ms=6
+SCORES window=198 captured_ms=65794 rms=0.017921 go=0.0108 up=0.6477 stop=0.3369 unknown=0.0047 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=199 captured_ms=66289 rms=0.011967 go=0.4294 up=0.1057 stop=0.3587 unknown=0.1062 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=200 captured_ms=66544 rms=0.013164 go=0.8249 up=0.0358 stop=0.0814 unknown=0.0578 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=201 captured_ms=66784 rms=0.014824 go=0.7000 up=0.0469 stop=0.1555 unknown=0.0976 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=202 captured_ms=67039 rms=0.008214 go=0.5938 up=0.0551 stop=0.2681 unknown=0.0830 event=NONE mode=STANDBY dsp_ms=297 cls_ms=5
+SCORES window=203 captured_ms=67534 rms=0.009119 go=0.7303 up=0.0415 stop=0.1527 unknown=0.0755 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=204 captured_ms=67789 rms=0.010859 go=0.7406 up=0.0453 stop=0.1184 unknown=0.0958 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=205 captured_ms=68044 rms=0.012063 go=0.6357 up=0.1133 stop=0.1894 unknown=0.0616 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=206 captured_ms=68284 rms=0.010946 go=0.3243 up=0.3958 stop=0.2774 unknown=0.0026 event=NONE mode=STANDBY dsp_ms=296 cls_ms=5
+SCORES window=207 captured_ms=68794 rms=0.011869 go=0.0059 up=0.6047 stop=0.3856 unknown=0.0039 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=208 captured_ms=69034 rms=0.012806 go=0.3975 up=0.4840 stop=0.0700 unknown=0.0485 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=209 captured_ms=69289 rms=0.009150 go=0.6031 up=0.1042 stop=0.2025 unknown=0.0903 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=210 captured_ms=69544 rms=0.005521 go=0.6702 up=0.0649 stop=0.1804 unknown=0.0844 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=211 captured_ms=69784 rms=0.007167 go=0.6976 up=0.0520 stop=0.1709 unknown=0.0795 event=NONE mode=STANDBY dsp_ms=294 cls_ms=5
+SCORES window=212 captured_ms=70294 rms=0.013592 go=0.0794 up=0.4983 stop=0.2644 unknown=0.1578 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=213 captured_ms=70534 rms=0.013303 go=0.1210 up=0.6065 stop=0.2559 unknown=0.0166 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+event=UP
+status_ms=71253 mode=ADDING seconds=10
+SCORES window=214 captured_ms=70789 rms=0.013191 go=0.0002 up=0.9956 stop=0.0039 unknown=0.0004 event=UP mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=215 captured_ms=71044 rms=0.013418 go=0.0125 up=0.3127 stop=0.6509 unknown=0.0240 event=NONE mode=ADDING dsp_ms=297 cls_ms=5
+SCORES window=216 captured_ms=71539 rms=0.005162 go=0.8327 up=0.0545 stop=0.0422 unknown=0.0706 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=217 captured_ms=71794 rms=0.005861 go=0.3374 up=0.1344 stop=0.1755 unknown=0.3527 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=218 captured_ms=72034 rms=0.004915 go=0.0357 up=0.0145 stop=0.8521 unknown=0.0978 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=219 captured_ms=72289 rms=0.005175 go=0.1444 up=0.0962 stop=0.6434 unknown=0.1159 event=NONE mode=ADDING dsp_ms=297 cls_ms=5
+SCORES window=220 captured_ms=72784 rms=0.004575 go=0.6727 up=0.1647 stop=0.1194 unknown=0.0433 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=221 captured_ms=73039 rms=0.002419 go=0.3167 up=0.1308 stop=0.3897 unknown=0.1628 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=222 captured_ms=73294 rms=0.005464 go=0.6921 up=0.1022 stop=0.1301 unknown=0.0756 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=223 captured_ms=73534 rms=0.004976 go=0.5553 up=0.0726 stop=0.2460 unknown=0.1261 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=224 captured_ms=73789 rms=0.004885 go=0.5560 up=0.0641 stop=0.2078 unknown=0.1721 event=NONE mode=ADDING dsp_ms=296 cls_ms=5
+SCORES window=225 captured_ms=74284 rms=0.009284 go=0.4730 up=0.0446 stop=0.0723 unknown=0.4102 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=226 captured_ms=74539 rms=0.008999 go=0.3874 up=0.0797 stop=0.2199 unknown=0.3130 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=227 captured_ms=74794 rms=0.004970 go=0.0627 up=0.0815 stop=0.7730 unknown=0.0828 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=228 captured_ms=75034 rms=0.011252 go=0.4766 up=0.3594 stop=0.0884 unknown=0.0757 event=NONE mode=ADDING dsp_ms=297 cls_ms=5
+event=UP
+status_ms=75866 mode=ADDING seconds=20
+SCORES window=229 captured_ms=75544 rms=0.010372 go=0.0025 up=0.9590 stop=0.0363 unknown=0.0022 event=UP mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=230 captured_ms=75784 rms=0.010692 go=0.1192 up=0.6690 stop=0.1380 unknown=0.0738 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=231 captured_ms=76039 rms=0.004185 go=0.2219 up=0.1758 stop=0.4934 unknown=0.1089 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=232 captured_ms=76294 rms=0.004415 go=0.5139 up=0.0943 stop=0.2743 unknown=0.1175 event=NONE mode=ADDING dsp_ms=295 cls_ms=6
+SCORES window=233 captured_ms=76789 rms=0.003377 go=0.5790 up=0.0511 stop=0.2583 unknown=0.1116 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=234 captured_ms=77044 rms=0.003237 go=0.5764 up=0.0730 stop=0.2516 unknown=0.0990 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=235 captured_ms=77284 rms=0.003944 go=0.6586 up=0.0776 stop=0.1879 unknown=0.0760 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=236 captured_ms=77539 rms=0.004322 go=0.4050 up=0.0761 stop=0.2365 unknown=0.2824 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+event=STOP
+status_ms=78324 mode=STANDBY
+SCORES window=237 captured_ms=77794 rms=0.006353 go=0.0018 up=0.0012 stop=0.9968 unknown=0.0002 event=STOP mode=STANDBY dsp_ms=295 cls_ms=5
+SCORES window=238 captured_ms=78289 rms=0.005624 go=0.0007 up=0.0265 stop=0.9725 unknown=0.0002 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=239 captured_ms=78544 rms=0.005279 go=0.2978 up=0.4911 stop=0.0815 unknown=0.1296 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=240 captured_ms=78784 rms=0.001224 go=0.6139 up=0.0860 stop=0.2102 unknown=0.0899 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=241 captured_ms=79039 rms=0.001364 go=0.5494 up=0.1194 stop=0.1750 unknown=0.1561 event=NONE mode=STANDBY dsp_ms=296 cls_ms=5
+SCORES window=242 captured_ms=79534 rms=0.001628 go=0.5446 up=0.0764 stop=0.1876 unknown=0.1914 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=243 captured_ms=79789 rms=0.001533 go=0.4921 up=0.0754 stop=0.3225 unknown=0.1100 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=244 captured_ms=80044 rms=0.001681 go=0.4398 up=0.0739 stop=0.3200 unknown=0.1663 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=245 captured_ms=80284 rms=0.002891 go=0.5711 up=0.0606 stop=0.2929 unknown=0.0754 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=246 captured_ms=80539 rms=0.004014 go=0.6068 up=0.0708 stop=0.1242 unknown=0.1982 event=NONE mode=STANDBY dsp_ms=294 cls_ms=5
+SCORES window=247 captured_ms=81034 rms=0.006578 go=0.2507 up=0.6306 stop=0.1150 unknown=0.0037 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=248 captured_ms=81289 rms=0.007086 go=0.0752 up=0.7156 stop=0.1972 unknown=0.0120 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=249 captured_ms=81544 rms=0.007809 go=0.1881 up=0.2522 stop=0.2613 unknown=0.2983 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=250 captured_ms=81784 rms=0.006082 go=0.0143 up=0.4895 stop=0.3428 unknown=0.1534 event=NONE mode=STANDBY dsp_ms=297 cls_ms=5
+SCORES window=251 captured_ms=82294 rms=0.004913 go=0.7501 up=0.0159 stop=0.0031 unknown=0.2309 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=252 captured_ms=82534 rms=0.003618 go=0.6592 up=0.0019 stop=0.0017 unknown=0.3372 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=253 captured_ms=82789 rms=0.002984 go=0.6443 up=0.0382 stop=0.0068 unknown=0.3107 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=254 captured_ms=83044 rms=0.004487 go=0.7725 up=0.0638 stop=0.0087 unknown=0.1550 event=NONE mode=STANDBY dsp_ms=297 cls_ms=5
+SCORES window=255 captured_ms=83539 rms=0.009074 go=0.4871 up=0.0695 stop=0.0803 unknown=0.3631 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=256 captured_ms=83794 rms=0.011591 go=0.7679 up=0.0148 stop=0.0134 unknown=0.2038 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=257 captured_ms=84034 rms=0.010986 go=0.8605 up=0.0356 stop=0.0218 unknown=0.0822 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=258 captured_ms=84289 rms=0.006091 go=0.5001 up=0.2907 stop=0.1613 unknown=0.0479 event=NONE mode=STANDBY dsp_ms=294 cls_ms=6
+SCORES window=259 captured_ms=84544 rms=0.010432 go=0.2929 up=0.4721 stop=0.1572 unknown=0.0777 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=260 captured_ms=85039 rms=0.008680 go=0.5023 up=0.1491 stop=0.0992 unknown=0.2494 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=261 captured_ms=85294 rms=0.008006 go=0.4851 up=0.0439 stop=0.0532 unknown=0.4178 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=262 captured_ms=85534 rms=0.002749 go=0.3901 up=0.0443 stop=0.0649 unknown=0.5007 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=263 captured_ms=85789 rms=0.003158 go=0.7170 up=0.0124 stop=0.0482 unknown=0.2224 event=NONE mode=STANDBY dsp_ms=296 cls_ms=5
+SCORES window=264 captured_ms=86284 rms=0.010762 go=0.1328 up=0.8330 stop=0.0270 unknown=0.0072 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+event=UP
+status_ms=86926 mode=ADDING seconds=10
+SCORES window=265 captured_ms=86539 rms=0.010659 go=0.0001 up=0.9995 stop=0.0004 unknown=0.0000 event=UP mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=266 captured_ms=86794 rms=0.010584 go=0.0012 up=0.9147 stop=0.0782 unknown=0.0058 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=267 captured_ms=87034 rms=0.003054 go=0.2920 up=0.3236 stop=0.2986 unknown=0.0858 event=NONE mode=ADDING dsp_ms=295 cls_ms=6
+SCORES window=268 captured_ms=87289 rms=0.002682 go=0.7778 up=0.0754 stop=0.0975 unknown=0.0493 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=269 captured_ms=87784 rms=0.005376 go=0.6179 up=0.0736 stop=0.2176 unknown=0.0909 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=270 captured_ms=88039 rms=0.007345 go=0.7078 up=0.0395 stop=0.1526 unknown=0.1001 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=271 captured_ms=88294 rms=0.012684 go=0.1492 up=0.5334 stop=0.2495 unknown=0.0680 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=272 captured_ms=88534 rms=0.013449 go=0.0462 up=0.6669 stop=0.2845 unknown=0.0024 event=NONE mode=ADDING dsp_ms=295 cls_ms=5
+SCORES window=273 captured_ms=89044 rms=0.012500 go=0.0409 up=0.5610 stop=0.3731 unknown=0.0250 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=274 captured_ms=89284 rms=0.012662 go=0.4008 up=0.1511 stop=0.3749 unknown=0.0733 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=275 captured_ms=89539 rms=0.010670 go=0.7257 up=0.0465 stop=0.1565 unknown=0.0714 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=276 captured_ms=89794 rms=0.008676 go=0.7279 up=0.0447 stop=0.1602 unknown=0.0671 event=NONE mode=ADDING dsp_ms=297 cls_ms=5
+SCORES window=277 captured_ms=90289 rms=0.003342 go=0.5884 up=0.0543 stop=0.2128 unknown=0.1445 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=278 captured_ms=90544 rms=0.002603 go=0.6072 up=0.0610 stop=0.2064 unknown=0.1254 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=279 captured_ms=90784 rms=0.001507 go=0.4321 up=0.0798 stop=0.3139 unknown=0.1742 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=280 captured_ms=91039 rms=0.001385 go=0.4879 up=0.0923 stop=0.2479 unknown=0.1719 event=NONE mode=ADDING dsp_ms=296 cls_ms=5
+SCORES window=281 captured_ms=91534 rms=0.003191 go=0.5309 up=0.0790 stop=0.2418 unknown=0.1484 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=282 captured_ms=91789 rms=0.002662 go=0.4800 up=0.0797 stop=0.3082 unknown=0.1320 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=283 captured_ms=92044 rms=0.005101 go=0.6362 up=0.0536 stop=0.2166 unknown=0.0935 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=284 captured_ms=92285 rms=0.006351 go=0.6502 up=0.0510 stop=0.2162 unknown=0.0826 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=285 captured_ms=92539 rms=0.004733 go=0.4218 up=0.0622 stop=0.3431 unknown=0.1729 event=NONE mode=ADDING dsp_ms=296 cls_ms=5
+SCORES window=286 captured_ms=93034 rms=0.003697 go=0.6672 up=0.0823 stop=0.1597 unknown=0.0909 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=287 captured_ms=93289 rms=0.004254 go=0.7034 up=0.1062 stop=0.1101 unknown=0.0803 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=288 captured_ms=93544 rms=0.004567 go=0.5124 up=0.0766 stop=0.2539 unknown=0.1571 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=289 captured_ms=93784 rms=0.003200 go=0.5028 up=0.0720 stop=0.2771 unknown=0.1481 event=NONE mode=ADDING dsp_ms=297 cls_ms=5
+SCORES window=290 captured_ms=94294 rms=0.004603 go=0.6314 up=0.0474 stop=0.1882 unknown=0.1329 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=291 captured_ms=94534 rms=0.005446 go=0.6453 up=0.0494 stop=0.1771 unknown=0.1281 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=292 captured_ms=94789 rms=0.004674 go=0.5400 up=0.0797 stop=0.2121 unknown=0.1683 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=293 captured_ms=95044 rms=0.002597 go=0.5180 up=0.0653 stop=0.3125 unknown=0.1042 event=NONE mode=ADDING dsp_ms=294 cls_ms=6
+SCORES window=294 captured_ms=95284 rms=0.006468 go=0.6734 up=0.0661 stop=0.1512 unknown=0.1093 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=295 captured_ms=95794 rms=0.009867 go=0.6011 up=0.0807 stop=0.2500 unknown=0.0681 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=296 captured_ms=96034 rms=0.010332 go=0.7369 up=0.0522 stop=0.1522 unknown=0.0587 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+
+
+# Run B: five attempts per target command, five UP -> GO -> STOP cycles.
+A2 Challenge: voice commands feed the A1 countdown timer
+commands: up=add 10 seconds, go=start, stop=cancel
+policy accept=0.90 release=0.55 minimum_latch_ms=1000 maximum_latch_ms=1500
+status_ms=18 mode=STANDBY
+SCORES window=1 captured_ms=1037 rms=0.021717 go=0.5556 up=0.2695 stop=0.0766 unknown=0.0983 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=2 captured_ms=1294 rms=0.021399 go=0.4386 up=0.0883 stop=0.2466 unknown=0.2264 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=3 captured_ms=1534 rms=0.018424 go=0.2695 up=0.2055 stop=0.3368 unknown=0.1882 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=4 captured_ms=1789 rms=0.017518 go=0.6364 up=0.0988 stop=0.1979 unknown=0.0668 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=5 captured_ms=2044 rms=0.016822 go=0.5359 up=0.0571 stop=0.3096 unknown=0.0974 event=NONE mode=STANDBY dsp_ms=295 cls_ms=5
+SCORES window=6 captured_ms=2539 rms=0.019322 go=0.6966 up=0.0487 stop=0.1045 unknown=0.1502 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=7 captured_ms=2794 rms=0.011403 go=0.6286 up=0.0366 stop=0.2159 unknown=0.1189 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=8 captured_ms=3034 rms=0.010369 go=0.7334 up=0.0531 stop=0.1125 unknown=0.1010 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=9 captured_ms=3289 rms=0.011954 go=0.6719 up=0.0504 stop=0.1061 unknown=0.1716 event=NONE mode=STANDBY dsp_ms=296 cls_ms=5
+SCORES window=10 captured_ms=3784 rms=0.008203 go=0.4917 up=0.0524 stop=0.1054 unknown=0.3505 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=11 captured_ms=4039 rms=0.011746 go=0.3291 up=0.2152 stop=0.4141 unknown=0.0416 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=12 captured_ms=4294 rms=0.011897 go=0.0019 up=0.7973 stop=0.1988 unknown=0.0020 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+event=UP
+status_ms=5030 mode=ADDING seconds=10
+SCORES window=13 captured_ms=4534 rms=0.011031 go=0.0011 up=0.9736 stop=0.0152 unknown=0.0101 event=UP mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=14 captured_ms=4789 rms=0.009581 go=0.1101 up=0.7247 stop=0.0208 unknown=0.1443 event=NONE mode=ADDING dsp_ms=294 cls_ms=5
+SCORES window=15 captured_ms=5284 rms=0.005900 go=0.1685 up=0.1923 stop=0.6114 unknown=0.0277 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=16 captured_ms=5539 rms=0.008182 go=0.4795 up=0.0712 stop=0.2968 unknown=0.1525 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=17 captured_ms=5794 rms=0.006473 go=0.7889 up=0.0359 stop=0.0996 unknown=0.0756 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=18 captured_ms=6034 rms=0.005707 go=0.5403 up=0.0096 stop=0.0257 unknown=0.4244 event=NONE mode=ADDING dsp_ms=297 cls_ms=5
+SCORES window=19 captured_ms=6544 rms=0.007124 go=0.5820 up=0.0015 stop=0.0008 unknown=0.4158 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=20 captured_ms=6784 rms=0.006272 go=0.2019 up=0.0187 stop=0.0571 unknown=0.7223 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=21 captured_ms=7039 rms=0.005410 go=0.3819 up=0.4464 stop=0.0991 unknown=0.0725 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=22 captured_ms=7294 rms=0.005194 go=0.5958 up=0.0557 stop=0.1831 unknown=0.1654 event=NONE mode=ADDING dsp_ms=297 cls_ms=5
+SCORES window=23 captured_ms=7789 rms=0.007687 go=0.6165 up=0.0385 stop=0.1721 unknown=0.1729 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=24 captured_ms=8044 rms=0.004862 go=0.6416 up=0.0359 stop=0.1639 unknown=0.1586 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=25 captured_ms=8284 rms=0.005853 go=0.6018 up=0.0489 stop=0.1754 unknown=0.1739 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=26 captured_ms=8539 rms=0.008620 go=0.5822 up=0.0114 stop=0.0148 unknown=0.3915 event=NONE mode=ADDING dsp_ms=294 cls_ms=6
+event=GO
+status_ms=9334 mode=COUNTDOWN seconds=10
+SCORES window=27 captured_ms=8794 rms=0.009063 go=0.9478 up=0.0002 stop=0.0002 unknown=0.0518 event=GO mode=COUNTDOWN dsp_ms=293 cls_ms=5
+SCORES window=28 captured_ms=9289 rms=0.007654 go=0.3920 up=0.0536 stop=0.1581 unknown=0.3963 event=NONE mode=COUNTDOWN dsp_ms=293 cls_ms=5
+SCORES window=29 captured_ms=9544 rms=0.005167 go=0.4857 up=0.2823 stop=0.1136 unknown=0.1184 event=NONE mode=COUNTDOWN dsp_ms=293 cls_ms=5
+SCORES window=30 captured_ms=9784 rms=0.004376 go=0.5186 up=0.0444 stop=0.2027 unknown=0.2342 event=NONE mode=COUNTDOWN dsp_ms=293 cls_ms=5
+SCORES window=31 captured_ms=10039 rms=0.004653 go=0.6358 up=0.0422 stop=0.1470 unknown=0.1750 event=NONE mode=COUNTDOWN dsp_ms=297 cls_ms=5
+status_ms=10566 mode=COUNTDOWN seconds=9
+SCORES window=32 captured_ms=10534 rms=0.006113 go=0.1747 up=0.0838 stop=0.1333 unknown=0.6083 event=NONE mode=COUNTDOWN dsp_ms=293 cls_ms=5
+event=STOP
+status_ms=11179 mode=STANDBY
+SCORES window=33 captured_ms=10789 rms=0.008849 go=0.0009 up=0.0004 stop=0.9985 unknown=0.0001 event=STOP mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=34 captured_ms=11044 rms=0.008324 go=0.0001 up=0.0000 stop=0.9999 unknown=0.0000 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=35 captured_ms=11284 rms=0.008338 go=0.0002 up=0.0037 stop=0.9960 unknown=0.0001 event=NONE mode=STANDBY dsp_ms=296 cls_ms=5
+SCORES window=36 captured_ms=11794 rms=0.006623 go=0.5418 up=0.0934 stop=0.1851 unknown=0.1798 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=37 captured_ms=12034 rms=0.009025 go=0.6254 up=0.0486 stop=0.2193 unknown=0.1067 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=38 captured_ms=12289 rms=0.010349 go=0.7546 up=0.0346 stop=0.0739 unknown=0.1369 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=39 captured_ms=12544 rms=0.010068 go=0.4883 up=0.0465 stop=0.1768 unknown=0.2884 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=40 captured_ms=12784 rms=0.007623 go=0.2161 up=0.1265 stop=0.5300 unknown=0.1274 event=NONE mode=STANDBY dsp_ms=294 cls_ms=5
+event=UP
+status_ms=13640 mode=ADDING seconds=10
+SCORES window=41 captured_ms=13294 rms=0.007076 go=0.0012 up=0.9825 stop=0.0078 unknown=0.0084 event=UP mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=42 captured_ms=13534 rms=0.007187 go=0.0282 up=0.4716 stop=0.4428 unknown=0.0575 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=43 captured_ms=13789 rms=0.004338 go=0.2954 up=0.1912 stop=0.3650 unknown=0.1484 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=44 captured_ms=14044 rms=0.005024 go=0.7896 up=0.0581 stop=0.0809 unknown=0.0714 event=NONE mode=ADDING dsp_ms=297 cls_ms=5
+SCORES window=45 captured_ms=14539 rms=0.008759 go=0.5612 up=0.0597 stop=0.2301 unknown=0.1491 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=46 captured_ms=14794 rms=0.006100 go=0.5167 up=0.0415 stop=0.2176 unknown=0.2242 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=47 captured_ms=15034 rms=0.006343 go=0.5806 up=0.0443 stop=0.1785 unknown=0.1966 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=48 captured_ms=15289 rms=0.006421 go=0.4765 up=0.0329 stop=0.0913 unknown=0.3992 event=NONE mode=ADDING dsp_ms=296 cls_ms=5
+SCORES window=49 captured_ms=15784 rms=0.005746 go=0.3713 up=0.0024 stop=0.0018 unknown=0.6245 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=50 captured_ms=16039 rms=0.005647 go=0.5499 up=0.0205 stop=0.0376 unknown=0.3921 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=51 captured_ms=16294 rms=0.003317 go=0.3840 up=0.3504 stop=0.0994 unknown=0.1662 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=52 captured_ms=16534 rms=0.002082 go=0.5364 up=0.0604 stop=0.2059 unknown=0.1973 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=53 captured_ms=16789 rms=0.004106 go=0.6217 up=0.0384 stop=0.1899 unknown=0.1499 event=NONE mode=ADDING dsp_ms=296 cls_ms=5
+SCORES window=54 captured_ms=17284 rms=0.005647 go=0.5088 up=0.0884 stop=0.2683 unknown=0.1344 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=55 captured_ms=17539 rms=0.014150 go=0.8911 up=0.0060 stop=0.0045 unknown=0.0983 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+event=GO
+status_ms=18250 mode=COUNTDOWN seconds=10
+SCORES window=56 captured_ms=17794 rms=0.014401 go=0.9860 up=0.0008 stop=0.0002 unknown=0.0129 event=GO mode=COUNTDOWN dsp_ms=293 cls_ms=5
+SCORES window=57 captured_ms=18034 rms=0.015067 go=0.9209 up=0.0078 stop=0.0007 unknown=0.0706 event=NONE mode=COUNTDOWN dsp_ms=297 cls_ms=5
+SCORES window=58 captured_ms=18544 rms=0.037728 go=0.4509 up=0.4171 stop=0.1047 unknown=0.0273 event=NONE mode=COUNTDOWN dsp_ms=293 cls_ms=5
+SCORES window=59 captured_ms=18784 rms=0.038265 go=0.6084 up=0.0798 stop=0.2530 unknown=0.0588 event=NONE mode=COUNTDOWN dsp_ms=293 cls_ms=5
+SCORES window=60 captured_ms=19039 rms=0.046485 go=0.6458 up=0.0633 stop=0.2192 unknown=0.0718 event=NONE mode=COUNTDOWN dsp_ms=293 cls_ms=5
+status_ms=19480 mode=COUNTDOWN seconds=9
+SCORES window=61 captured_ms=19294 rms=0.039467 go=0.1760 up=0.4406 stop=0.1401 unknown=0.2433 event=NONE mode=COUNTDOWN dsp_ms=296 cls_ms=5
+event=STOP
+status_ms=20096 mode=STANDBY
+SCORES window=62 captured_ms=19789 rms=0.014449 go=0.0000 up=0.0000 stop=1.0000 unknown=0.0000 event=STOP mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=63 captured_ms=20044 rms=0.014211 go=0.0000 up=0.0058 stop=0.9942 unknown=0.0000 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=64 captured_ms=20284 rms=0.013950 go=0.0077 up=0.7622 stop=0.1958 unknown=0.0342 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=65 captured_ms=20539 rms=0.008228 go=0.2063 up=0.2407 stop=0.4270 unknown=0.1260 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=66 captured_ms=20794 rms=0.011502 go=0.7359 up=0.0722 stop=0.1188 unknown=0.0732 event=NONE mode=STANDBY dsp_ms=295 cls_ms=5
+SCORES window=67 captured_ms=21289 rms=0.010187 go=0.7768 up=0.0537 stop=0.0681 unknown=0.1013 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=68 captured_ms=21544 rms=0.009803 go=0.3974 up=0.1291 stop=0.3960 unknown=0.0775 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=69 captured_ms=21784 rms=0.015224 go=0.3033 up=0.1876 stop=0.1816 unknown=0.3275 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=70 captured_ms=22039 rms=0.019121 go=0.0543 up=0.7851 stop=0.1341 unknown=0.0265 event=NONE mode=STANDBY dsp_ms=296 cls_ms=5
+SCORES window=71 captured_ms=22534 rms=0.016707 go=0.0009 up=0.8107 stop=0.1745 unknown=0.0139 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+event=UP
+status_ms=23167 mode=ADDING seconds=10
+SCORES window=72 captured_ms=22789 rms=0.017978 go=0.0424 up=0.9287 stop=0.0071 unknown=0.0217 event=UP mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=73 captured_ms=23044 rms=0.014650 go=0.1437 up=0.1863 stop=0.5287 unknown=0.1413 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=74 captured_ms=23284 rms=0.015495 go=0.7538 up=0.0556 stop=0.1172 unknown=0.0734 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=75 captured_ms=23539 rms=0.019365 go=0.6630 up=0.0553 stop=0.2143 unknown=0.0674 event=NONE mode=ADDING dsp_ms=294 cls_ms=5
+SCORES window=76 captured_ms=24034 rms=0.019121 go=0.6119 up=0.0958 stop=0.2066 unknown=0.0857 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=77 captured_ms=24289 rms=0.014786 go=0.5703 up=0.0135 stop=0.0263 unknown=0.3899 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+event=GO
+status_ms=25008 mode=COUNTDOWN seconds=10
+SCORES window=78 captured_ms=24544 rms=0.013302 go=0.9125 up=0.0017 stop=0.0006 unknown=0.0853 event=GO mode=COUNTDOWN dsp_ms=293 cls_ms=5
+SCORES window=79 captured_ms=24784 rms=0.010598 go=0.6322 up=0.0067 stop=0.0010 unknown=0.3601 event=NONE mode=COUNTDOWN dsp_ms=297 cls_ms=5
+SCORES window=80 captured_ms=25294 rms=0.005178 go=0.2131 up=0.6076 stop=0.0841 unknown=0.0952 event=NONE mode=COUNTDOWN dsp_ms=293 cls_ms=5
+SCORES window=81 captured_ms=25534 rms=0.002295 go=0.5608 up=0.0852 stop=0.2392 unknown=0.1148 event=NONE mode=COUNTDOWN dsp_ms=293 cls_ms=5
+SCORES window=82 captured_ms=25789 rms=0.002207 go=0.5857 up=0.0798 stop=0.2184 unknown=0.1160 event=NONE mode=COUNTDOWN dsp_ms=293 cls_ms=5
+status_ms=26240 mode=COUNTDOWN seconds=9
+SCORES window=83 captured_ms=26044 rms=0.002529 go=0.5843 up=0.0576 stop=0.2527 unknown=0.1054 event=NONE mode=COUNTDOWN dsp_ms=297 cls_ms=5
+SCORES window=84 captured_ms=26539 rms=0.002921 go=0.6155 up=0.0806 stop=0.1378 unknown=0.1662 event=NONE mode=COUNTDOWN dsp_ms=293 cls_ms=5
+SCORES window=85 captured_ms=26794 rms=0.005997 go=0.1488 up=0.0353 stop=0.6159 unknown=0.1999 event=NONE mode=COUNTDOWN dsp_ms=293 cls_ms=5
+status_ms=27163 mode=COUNTDOWN seconds=8
+event=STOP
+status_ms=27469 mode=STANDBY
+SCORES window=86 captured_ms=27034 rms=0.006430 go=0.0005 up=0.0001 stop=0.9994 unknown=0.0000 event=STOP mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=87 captured_ms=27289 rms=0.006638 go=0.0001 up=0.0003 stop=0.9996 unknown=0.0000 event=NONE mode=STANDBY dsp_ms=294 cls_ms=6
+SCORES window=88 captured_ms=27544 rms=0.007116 go=0.0027 up=0.1012 stop=0.8947 unknown=0.0014 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=89 captured_ms=28039 rms=0.002925 go=0.7419 up=0.0790 stop=0.1083 unknown=0.0708 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=90 captured_ms=28294 rms=0.006100 go=0.5970 up=0.0752 stop=0.0866 unknown=0.2413 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=91 captured_ms=28534 rms=0.008612 go=0.2860 up=0.0604 stop=0.2616 unknown=0.3921 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=92 captured_ms=28789 rms=0.007948 go=0.1293 up=0.1757 stop=0.5511 unknown=0.1439 event=NONE mode=STANDBY dsp_ms=297 cls_ms=5
+SCORES window=93 captured_ms=29284 rms=0.019505 go=0.3026 up=0.6416 stop=0.0177 unknown=0.0382 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+event=UP
+status_ms=29930 mode=ADDING seconds=10
+SCORES window=94 captured_ms=29539 rms=0.019760 go=0.0192 up=0.9371 stop=0.0425 unknown=0.0012 event=UP mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=95 captured_ms=29794 rms=0.018108 go=0.0017 up=0.9117 stop=0.0799 unknown=0.0066 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=96 captured_ms=30034 rms=0.013692 go=0.0110 up=0.9784 stop=0.0025 unknown=0.0082 event=NONE mode=ADDING dsp_ms=296 cls_ms=5
+SCORES window=97 captured_ms=30544 rms=0.026481 go=0.7142 up=0.0948 stop=0.1376 unknown=0.0533 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=98 captured_ms=30784 rms=0.025101 go=0.7550 up=0.0446 stop=0.1402 unknown=0.0602 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=99 captured_ms=31039 rms=0.028881 go=0.8119 up=0.0341 stop=0.1003 unknown=0.0537 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=100 captured_ms=31294 rms=0.031102 go=0.7097 up=0.0281 stop=0.0593 unknown=0.2029 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+event=GO
+status_ms=32083 mode=COUNTDOWN seconds=10
+SCORES window=101 captured_ms=31534 rms=0.019486 go=0.9604 up=0.0033 stop=0.0044 unknown=0.0319 event=GO mode=COUNTDOWN dsp_ms=294 cls_ms=5
+SCORES window=102 captured_ms=32044 rms=0.012573 go=0.8450 up=0.0059 stop=0.0078 unknown=0.1413 event=NONE mode=COUNTDOWN dsp_ms=293 cls_ms=5
+SCORES window=103 captured_ms=32284 rms=0.012157 go=0.1874 up=0.6013 stop=0.0776 unknown=0.1338 event=NONE mode=COUNTDOWN dsp_ms=293 cls_ms=5
+SCORES window=104 captured_ms=32539 rms=0.008318 go=0.6152 up=0.1114 stop=0.1854 unknown=0.0880 event=NONE mode=COUNTDOWN dsp_ms=293 cls_ms=5
+SCORES window=105 captured_ms=32794 rms=0.007731 go=0.5938 up=0.0740 stop=0.2139 unknown=0.1182 event=NONE mode=COUNTDOWN dsp_ms=297 cls_ms=5
+status_ms=33313 mode=COUNTDOWN seconds=9
+SCORES window=106 captured_ms=33289 rms=0.012135 go=0.0003 up=0.0011 stop=0.9985 unknown=0.0002 event=NONE mode=COUNTDOWN dsp_ms=293 cls_ms=5
+event=STOP
+status_ms=33926 mode=STANDBY
+SCORES window=107 captured_ms=33544 rms=0.012179 go=0.0000 up=0.0000 stop=1.0000 unknown=0.0000 event=STOP mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=108 captured_ms=33784 rms=0.012461 go=0.0000 up=0.0008 stop=0.9992 unknown=0.0000 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=109 captured_ms=34039 rms=0.012137 go=0.0306 up=0.8478 stop=0.0785 unknown=0.0431 event=NONE mode=STANDBY dsp_ms=297 cls_ms=5
+SCORES window=110 captured_ms=34534 rms=0.005687 go=0.6020 up=0.0728 stop=0.2149 unknown=0.1103 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=111 captured_ms=34789 rms=0.004938 go=0.4609 up=0.0907 stop=0.3086 unknown=0.1397 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=112 captured_ms=35044 rms=0.017203 go=0.0538 up=0.4120 stop=0.2982 unknown=0.2360 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=113 captured_ms=35284 rms=0.017385 go=0.0466 up=0.6341 stop=0.3047 unknown=0.0146 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+event=UP
+status_ms=36080 mode=ADDING seconds=10
+SCORES window=114 captured_ms=35539 rms=0.017397 go=0.0002 up=0.9947 stop=0.0032 unknown=0.0018 event=UP mode=ADDING dsp_ms=296 cls_ms=5
+SCORES window=115 captured_ms=36034 rms=0.003353 go=0.1374 up=0.6502 stop=0.1372 unknown=0.0752 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=116 captured_ms=36289 rms=0.001732 go=0.8464 up=0.0771 stop=0.0310 unknown=0.0455 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=117 captured_ms=36544 rms=0.001507 go=0.5142 up=0.0987 stop=0.2549 unknown=0.1323 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=118 captured_ms=36784 rms=0.001942 go=0.5380 up=0.0765 stop=0.2369 unknown=0.1486 event=NONE mode=ADDING dsp_ms=296 cls_ms=5
+event=GO
+status_ms=37617 mode=COUNTDOWN seconds=10
+SCORES window=119 captured_ms=37294 rms=0.012410 go=0.9894 up=0.0031 stop=0.0028 unknown=0.0047 event=GO mode=COUNTDOWN dsp_ms=293 cls_ms=5
+SCORES window=120 captured_ms=37534 rms=0.011343 go=0.9511 up=0.0054 stop=0.0193 unknown=0.0242 event=NONE mode=COUNTDOWN dsp_ms=293 cls_ms=5
+SCORES window=121 captured_ms=37789 rms=0.010390 go=0.7940 up=0.0534 stop=0.0546 unknown=0.0980 event=NONE mode=COUNTDOWN dsp_ms=293 cls_ms=5
+SCORES window=122 captured_ms=38044 rms=0.009457 go=0.1474 up=0.6557 stop=0.0815 unknown=0.1154 event=NONE mode=COUNTDOWN dsp_ms=295 cls_ms=6
+SCORES window=123 captured_ms=38538 rms=0.004138 go=0.5697 up=0.0690 stop=0.2333 unknown=0.1280 event=NONE mode=COUNTDOWN dsp_ms=293 cls_ms=5
+status_ms=38846 mode=COUNTDOWN seconds=9
+SCORES window=124 captured_ms=38794 rms=0.005216 go=0.1999 up=0.2668 stop=0.0937 unknown=0.4396 event=NONE mode=COUNTDOWN dsp_ms=293 cls_ms=5
+event=STOP
+status_ms=39458 mode=STANDBY
+SCORES window=125 captured_ms=39034 rms=0.013498 go=0.0023 up=0.0027 stop=0.9937 unknown=0.0012 event=STOP mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=126 captured_ms=39289 rms=0.012921 go=0.0000 up=0.0000 stop=1.0000 unknown=0.0000 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=127 captured_ms=39544 rms=0.012536 go=0.0000 up=0.0038 stop=0.9962 unknown=0.0000 event=NONE mode=STANDBY dsp_ms=295 cls_ms=5
+SCORES window=128 captured_ms=40039 rms=0.004530 go=0.2158 up=0.1846 stop=0.5179 unknown=0.0817 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=129 captured_ms=40294 rms=0.002476 go=0.6928 up=0.0754 stop=0.1635 unknown=0.0683 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=130 captured_ms=40534 rms=0.003711 go=0.5843 up=0.0655 stop=0.2281 unknown=0.1220 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=131 captured_ms=40789 rms=0.005165 go=0.5479 up=0.0780 stop=0.2617 unknown=0.1125 event=NONE mode=STANDBY dsp_ms=297 cls_ms=5
+SCORES window=132 captured_ms=41284 rms=0.008199 go=0.4639 up=0.1140 stop=0.2782 unknown=0.1438 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=133 captured_ms=41539 rms=0.009417 go=0.6953 up=0.0417 stop=0.1705 unknown=0.0925 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=134 captured_ms=41794 rms=0.024381 go=0.7730 up=0.0564 stop=0.0989 unknown=0.0717 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=135 captured_ms=42034 rms=0.028554 go=0.5563 up=0.1250 stop=0.2643 unknown=0.0544 event=NONE mode=STANDBY dsp_ms=293 cls_ms=6
+SCORES window=136 captured_ms=42289 rms=0.027096 go=0.3878 up=0.0854 stop=0.4585 unknown=0.0683 event=NONE mode=STANDBY dsp_ms=294 cls_ms=5
+SCORES window=137 captured_ms=42784 rms=0.022461 go=0.6925 up=0.1496 stop=0.1206 unknown=0.0373 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=138 captured_ms=43039 rms=0.021723 go=0.2796 up=0.1719 stop=0.5220 unknown=0.0265 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+
+
+# Run C: board reset, no speech.
+A2 Challenge: voice commands feed the A1 countdown timer
+commands: up=add 10 seconds, go=start, stop=cancel
+policy accept=0.90 release=0.55 minimum_latch_ms=1000 maximum_latch_ms=1500
+status_ms=18 mode=STANDBY
+SCORES window=1 captured_ms=1038 rms=0.027714 go=0.7041 up=0.1507 stop=0.0699 unknown=0.0753 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=2 captured_ms=1294 rms=0.018917 go=0.4425 up=0.1984 stop=0.1613 unknown=0.1978 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=3 captured_ms=1534 rms=0.015347 go=0.6112 up=0.1349 stop=0.1959 unknown=0.0581 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=4 captured_ms=1789 rms=0.013730 go=0.2772 up=0.1456 stop=0.4838 unknown=0.0934 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=5 captured_ms=2044 rms=0.009363 go=0.8117 up=0.0705 stop=0.0677 unknown=0.0501 event=NONE mode=STANDBY dsp_ms=295 cls_ms=5
+SCORES window=6 captured_ms=2539 rms=0.005471 go=0.5189 up=0.0664 stop=0.2866 unknown=0.1281 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=7 captured_ms=2794 rms=0.002684 go=0.5591 up=0.0814 stop=0.1978 unknown=0.1617 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=8 captured_ms=3034 rms=0.001998 go=0.5563 up=0.0767 stop=0.2375 unknown=0.1295 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+
+
+# Run D: 10 non-command phrases spoken in STANDBY.
+A2 Challenge: voice commands feed the A1 countdown timer
+commands: up=add 10 seconds, go=start, stop=cancel
+policy accept=0.90 release=0.55 minimum_latch_ms=1000 maximum_latch_ms=1500
+status_ms=18 mode=STANDBY
+SCORES window=1 captured_ms=1038 rms=0.019937 go=0.7453 up=0.0411 stop=0.1735 unknown=0.0400 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=2 captured_ms=1294 rms=0.005235 go=0.4770 up=0.1128 stop=0.2728 unknown=0.1375 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=3 captured_ms=1534 rms=0.006289 go=0.5955 up=0.0802 stop=0.2116 unknown=0.1126 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=4 captured_ms=1789 rms=0.007911 go=0.6304 up=0.0603 stop=0.1842 unknown=0.1251 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=5 captured_ms=2044 rms=0.007767 go=0.7013 up=0.0477 stop=0.1277 unknown=0.1233 event=NONE mode=STANDBY dsp_ms=294 cls_ms=5
+SCORES window=6 captured_ms=2539 rms=0.002946 go=0.5885 up=0.0631 stop=0.1749 unknown=0.1736 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=7 captured_ms=2794 rms=0.003066 go=0.5260 up=0.0969 stop=0.2357 unknown=0.1414 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=8 captured_ms=3034 rms=0.004734 go=0.5508 up=0.0708 stop=0.2474 unknown=0.1310 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=9 captured_ms=3289 rms=0.004950 go=0.5339 up=0.0663 stop=0.2691 unknown=0.1308 event=NONE mode=STANDBY dsp_ms=296 cls_ms=5
+SCORES window=10 captured_ms=3784 rms=0.003342 go=0.5598 up=0.0692 stop=0.2360 unknown=0.1350 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=11 captured_ms=4039 rms=0.003650 go=0.5375 up=0.0616 stop=0.2264 unknown=0.1745 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=12 captured_ms=4294 rms=0.003080 go=0.5213 up=0.0505 stop=0.1946 unknown=0.2335 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=13 captured_ms=4534 rms=0.002880 go=0.0717 up=0.0487 stop=0.0714 unknown=0.8082 event=NONE mode=STANDBY dsp_ms=293 cls_ms=6
+SCORES window=14 captured_ms=4789 rms=0.004469 go=0.8273 up=0.0021 stop=0.0075 unknown=0.1631 event=NONE mode=STANDBY dsp_ms=294 cls_ms=5
+SCORES window=15 captured_ms=5284 rms=0.005788 go=0.0411 up=0.0114 stop=0.0048 unknown=0.9427 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=16 captured_ms=5539 rms=0.004034 go=0.0482 up=0.0169 stop=0.0088 unknown=0.9261 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=17 captured_ms=5794 rms=0.002989 go=0.3445 up=0.2006 stop=0.1819 unknown=0.2729 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=18 captured_ms=6034 rms=0.003540 go=0.6567 up=0.0482 stop=0.1981 unknown=0.0970 event=NONE mode=STANDBY dsp_ms=296 cls_ms=5
+SCORES window=19 captured_ms=6544 rms=0.004059 go=0.6237 up=0.0478 stop=0.2172 unknown=0.1112 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=20 captured_ms=6785 rms=0.003842 go=0.5953 up=0.0567 stop=0.1926 unknown=0.1554 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=21 captured_ms=7039 rms=0.002370 go=0.5214 up=0.0650 stop=0.2720 unknown=0.1416 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=22 captured_ms=7294 rms=0.003067 go=0.5287 up=0.0908 stop=0.2346 unknown=0.1460 event=NONE mode=STANDBY dsp_ms=296 cls_ms=5
+SCORES window=23 captured_ms=7789 rms=0.003965 go=0.5813 up=0.0570 stop=0.2323 unknown=0.1293 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=24 captured_ms=8044 rms=0.004549 go=0.5242 up=0.0704 stop=0.2352 unknown=0.1702 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=25 captured_ms=8284 rms=0.002806 go=0.5189 up=0.0656 stop=0.2718 unknown=0.1436 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=26 captured_ms=8539 rms=0.002102 go=0.4375 up=0.0797 stop=0.2802 unknown=0.2026 event=NONE mode=STANDBY dsp_ms=295 cls_ms=6
+SCORES window=27 captured_ms=8794 rms=0.002102 go=0.5128 up=0.0724 stop=0.2760 unknown=0.1388 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=28 captured_ms=9289 rms=0.006548 go=0.6003 up=0.0792 stop=0.1815 unknown=0.1391 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=29 captured_ms=9544 rms=0.006174 go=0.5436 up=0.0593 stop=0.3123 unknown=0.0848 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=30 captured_ms=9784 rms=0.005587 go=0.6001 up=0.0553 stop=0.2104 unknown=0.1342 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=31 captured_ms=10039 rms=0.005230 go=0.4942 up=0.0587 stop=0.2174 unknown=0.2296 event=NONE mode=STANDBY dsp_ms=296 cls_ms=5
+SCORES window=32 captured_ms=10534 rms=0.008938 go=0.2775 up=0.4626 stop=0.0238 unknown=0.2361 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=33 captured_ms=10789 rms=0.008841 go=0.0206 up=0.8996 stop=0.0069 unknown=0.0729 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=34 captured_ms=11044 rms=0.006316 go=0.2652 up=0.1254 stop=0.0111 unknown=0.5983 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=35 captured_ms=11284 rms=0.003855 go=0.2034 up=0.0260 stop=0.0061 unknown=0.7645 event=NONE mode=STANDBY dsp_ms=296 cls_ms=5
+SCORES window=36 captured_ms=11794 rms=0.004202 go=0.5891 up=0.2024 stop=0.1403 unknown=0.0682 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=37 captured_ms=12034 rms=0.004384 go=0.7366 up=0.0568 stop=0.1320 unknown=0.0746 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=38 captured_ms=12289 rms=0.009283 go=0.7219 up=0.0629 stop=0.0993 unknown=0.1159 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=39 captured_ms=12544 rms=0.011230 go=0.5325 up=0.1509 stop=0.2436 unknown=0.0731 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=40 captured_ms=12784 rms=0.016528 go=0.5858 up=0.0640 stop=0.2505 unknown=0.0997 event=NONE mode=STANDBY dsp_ms=294 cls_ms=5
+SCORES window=41 captured_ms=13294 rms=0.009538 go=0.6466 up=0.0660 stop=0.1706 unknown=0.1169 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=42 captured_ms=13534 rms=0.009595 go=0.7397 up=0.0545 stop=0.0959 unknown=0.1100 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=43 captured_ms=13789 rms=0.010017 go=0.6575 up=0.0654 stop=0.1782 unknown=0.0989 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=44 captured_ms=14044 rms=0.007941 go=0.3222 up=0.1242 stop=0.4064 unknown=0.1472 event=NONE mode=STANDBY dsp_ms=297 cls_ms=5
+SCORES window=45 captured_ms=14539 rms=0.007643 go=0.4363 up=0.0154 stop=0.0179 unknown=0.5304 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=46 captured_ms=14794 rms=0.008663 go=0.7596 up=0.0081 stop=0.0076 unknown=0.2247 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=47 captured_ms=15034 rms=0.009617 go=0.1435 up=0.0568 stop=0.0019 unknown=0.7978 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=48 captured_ms=15289 rms=0.010035 go=0.1943 up=0.0132 stop=0.0003 unknown=0.7923 event=NONE mode=STANDBY dsp_ms=297 cls_ms=5
+SCORES window=49 captured_ms=15784 rms=0.018921 go=0.5982 up=0.1105 stop=0.0483 unknown=0.2429 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=50 captured_ms=16039 rms=0.020284 go=0.7592 up=0.1146 stop=0.0820 unknown=0.0443 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=51 captured_ms=16294 rms=0.017989 go=0.6287 up=0.0629 stop=0.1949 unknown=0.1134 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=52 captured_ms=16534 rms=0.015898 go=0.6295 up=0.0673 stop=0.2090 unknown=0.0942 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=53 captured_ms=16789 rms=0.020121 go=0.7753 up=0.0466 stop=0.1199 unknown=0.0582 event=NONE mode=STANDBY dsp_ms=296 cls_ms=5
+SCORES window=54 captured_ms=17284 rms=0.024768 go=0.7276 up=0.0468 stop=0.1420 unknown=0.0836 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=55 captured_ms=17539 rms=0.018716 go=0.5458 up=0.0663 stop=0.2552 unknown=0.1327 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=56 captured_ms=17794 rms=0.009994 go=0.6387 up=0.0535 stop=0.2018 unknown=0.1060 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=57 captured_ms=18034 rms=0.011416 go=0.6955 up=0.0624 stop=0.1069 unknown=0.1352 event=NONE mode=STANDBY dsp_ms=297 cls_ms=5
+SCORES window=58 captured_ms=18544 rms=0.018409 go=0.4808 up=0.0608 stop=0.1248 unknown=0.3336 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=59 captured_ms=18784 rms=0.017480 go=0.8865 up=0.0120 stop=0.0016 unknown=0.0998 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=60 captured_ms=19039 rms=0.013684 go=0.7128 up=0.0279 stop=0.0254 unknown=0.2339 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=61 captured_ms=19294 rms=0.011623 go=0.1203 up=0.0120 stop=0.0268 unknown=0.8409 event=NONE mode=STANDBY dsp_ms=295 cls_ms=6
+SCORES window=62 captured_ms=19534 rms=0.008135 go=0.1748 up=0.1889 stop=0.0087 unknown=0.6276 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=63 captured_ms=20044 rms=0.003855 go=0.3029 up=0.1173 stop=0.2841 unknown=0.2957 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=64 captured_ms=20284 rms=0.001830 go=0.5885 up=0.1530 stop=0.1621 unknown=0.0964 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=65 captured_ms=20539 rms=0.002470 go=0.4657 up=0.0702 stop=0.2987 unknown=0.1655 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=66 captured_ms=20794 rms=0.003184 go=0.4819 up=0.0733 stop=0.2825 unknown=0.1624 event=NONE mode=STANDBY dsp_ms=295 cls_ms=5
+SCORES window=67 captured_ms=21289 rms=0.001963 go=0.4601 up=0.0716 stop=0.3117 unknown=0.1565 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=68 captured_ms=21544 rms=0.001969 go=0.4415 up=0.0720 stop=0.3472 unknown=0.1393 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=69 captured_ms=21784 rms=0.003214 go=0.5112 up=0.0576 stop=0.2948 unknown=0.1363 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=70 captured_ms=22039 rms=0.006024 go=0.6321 up=0.0503 stop=0.1912 unknown=0.1264 event=NONE mode=STANDBY dsp_ms=296 cls_ms=5
+SCORES window=71 captured_ms=22534 rms=0.006276 go=0.5664 up=0.0730 stop=0.2262 unknown=0.1345 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=72 captured_ms=22789 rms=0.004418 go=0.4398 up=0.0941 stop=0.2821 unknown=0.1839 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=73 captured_ms=23044 rms=0.009230 go=0.7969 up=0.0133 stop=0.0226 unknown=0.1671 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=74 captured_ms=23284 rms=0.010654 go=0.5929 up=0.0016 stop=0.0021 unknown=0.4034 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=75 captured_ms=23539 rms=0.008038 go=0.1690 up=0.0013 stop=0.0015 unknown=0.8281 event=NONE mode=STANDBY dsp_ms=294 cls_ms=5
+SCORES window=76 captured_ms=24034 rms=0.003103 go=0.4479 up=0.0161 stop=0.0411 unknown=0.4948 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=77 captured_ms=24289 rms=0.002912 go=0.3670 up=0.0328 stop=0.0070 unknown=0.5932 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=78 captured_ms=24544 rms=0.003032 go=0.5694 up=0.1652 stop=0.0713 unknown=0.1941 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=79 captured_ms=24784 rms=0.003108 go=0.3065 up=0.1144 stop=0.1175 unknown=0.4615 event=NONE mode=STANDBY dsp_ms=297 cls_ms=5
+SCORES window=80 captured_ms=25294 rms=0.008019 go=0.2515 up=0.0334 stop=0.0409 unknown=0.6742 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=81 captured_ms=25534 rms=0.006586 go=0.3300 up=0.0806 stop=0.2217 unknown=0.3677 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=82 captured_ms=25789 rms=0.004776 go=0.5632 up=0.2677 stop=0.1079 unknown=0.0612 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=83 captured_ms=26044 rms=0.004375 go=0.2274 up=0.2306 stop=0.4523 unknown=0.0897 event=NONE mode=STANDBY dsp_ms=297 cls_ms=5
+SCORES window=84 captured_ms=26539 rms=0.006861 go=0.5627 up=0.0804 stop=0.2382 unknown=0.1187 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=85 captured_ms=26794 rms=0.006661 go=0.5259 up=0.0629 stop=0.2810 unknown=0.1301 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=86 captured_ms=27034 rms=0.007658 go=0.6676 up=0.0652 stop=0.1300 unknown=0.1372 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=87 captured_ms=27289 rms=0.015763 go=0.8393 up=0.0254 stop=0.0436 unknown=0.0916 event=NONE mode=STANDBY dsp_ms=294 cls_ms=6
+SCORES window=88 captured_ms=27544 rms=0.012874 go=0.3554 up=0.0072 stop=0.0297 unknown=0.6077 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=89 captured_ms=28039 rms=0.009913 go=0.5975 up=0.0392 stop=0.0381 unknown=0.3252 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=90 captured_ms=28294 rms=0.009180 go=0.6203 up=0.0901 stop=0.2363 unknown=0.0534 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=91 captured_ms=28534 rms=0.010211 go=0.5564 up=0.1330 stop=0.2233 unknown=0.0873 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=92 captured_ms=28789 rms=0.007406 go=0.4669 up=0.0715 stop=0.2967 unknown=0.1649 event=NONE mode=STANDBY dsp_ms=296 cls_ms=5
+SCORES window=93 captured_ms=29284 rms=0.002864 go=0.4131 up=0.0906 stop=0.3027 unknown=0.1936 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=94 captured_ms=29539 rms=0.002235 go=0.3823 up=0.1038 stop=0.2540 unknown=0.2600 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=95 captured_ms=29794 rms=0.002523 go=0.6544 up=0.0475 stop=0.0807 unknown=0.2174 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=96 captured_ms=30034 rms=0.003856 go=0.6663 up=0.1554 stop=0.0148 unknown=0.1635 event=NONE mode=STANDBY dsp_ms=294 cls_ms=6
+SCORES window=97 captured_ms=30289 rms=0.004134 go=0.1601 up=0.5325 stop=0.1068 unknown=0.2006 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=98 captured_ms=30784 rms=0.002734 go=0.2640 up=0.1544 stop=0.3056 unknown=0.2760 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=99 captured_ms=31039 rms=0.002254 go=0.4200 up=0.1051 stop=0.2783 unknown=0.1966 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=100 captured_ms=31294 rms=0.002813 go=0.6011 up=0.0537 stop=0.2303 unknown=0.1149 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=101 captured_ms=31534 rms=0.004736 go=0.6025 up=0.0554 stop=0.1742 unknown=0.1679 event=NONE mode=STANDBY dsp_ms=296 cls_ms=5
+SCORES window=102 captured_ms=32044 rms=0.004654 go=0.1203 up=0.0654 stop=0.6022 unknown=0.2122 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=103 captured_ms=32284 rms=0.005832 go=0.3976 up=0.0259 stop=0.3933 unknown=0.1832 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=104 captured_ms=32539 rms=0.006764 go=0.3776 up=0.0375 stop=0.1937 unknown=0.3912 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=105 captured_ms=32794 rms=0.005621 go=0.4374 up=0.0276 stop=0.4594 unknown=0.0755 event=NONE mode=STANDBY dsp_ms=297 cls_ms=5
+SCORES window=106 captured_ms=33289 rms=0.004538 go=0.2323 up=0.0952 stop=0.4200 unknown=0.2525 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=107 captured_ms=33544 rms=0.002515 go=0.5243 up=0.0683 stop=0.2787 unknown=0.1287 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=108 captured_ms=33784 rms=0.002431 go=0.4293 up=0.0872 stop=0.3130 unknown=0.1704 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=109 captured_ms=34039 rms=0.004724 go=0.5830 up=0.0643 stop=0.2414 unknown=0.1113 event=NONE mode=STANDBY dsp_ms=296 cls_ms=5
+SCORES window=110 captured_ms=34534 rms=0.006867 go=0.7323 up=0.0368 stop=0.0183 unknown=0.2127 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=111 captured_ms=34789 rms=0.003782 go=0.2807 up=0.0049 stop=0.0031 unknown=0.7113 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=112 captured_ms=35044 rms=0.003175 go=0.4987 up=0.0457 stop=0.1114 unknown=0.3442 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=113 captured_ms=35284 rms=0.004499 go=0.6220 up=0.0068 stop=0.0060 unknown=0.3652 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=114 captured_ms=35539 rms=0.009553 go=0.0168 up=0.0022 stop=0.0088 unknown=0.9722 event=NONE mode=STANDBY dsp_ms=297 cls_ms=5
+SCORES window=115 captured_ms=36034 rms=0.009279 go=0.2850 up=0.1397 stop=0.4036 unknown=0.1717 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=116 captured_ms=36289 rms=0.005909 go=0.6971 up=0.0659 stop=0.1339 unknown=0.1031 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=117 captured_ms=36544 rms=0.010385 go=0.5809 up=0.0590 stop=0.2511 unknown=0.1090 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=118 captured_ms=36784 rms=0.010935 go=0.6473 up=0.0603 stop=0.1615 unknown=0.1308 event=NONE mode=STANDBY dsp_ms=297 cls_ms=5
+SCORES window=119 captured_ms=37294 rms=0.005510 go=0.5615 up=0.0684 stop=0.2090 unknown=0.1610 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=120 captured_ms=37534 rms=0.003754 go=0.4964 up=0.0736 stop=0.2809 unknown=0.1490 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=121 captured_ms=37789 rms=0.004770 go=0.5682 up=0.0538 stop=0.2872 unknown=0.0908 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=122 captured_ms=38044 rms=0.006784 go=0.4818 up=0.0588 stop=0.3081 unknown=0.1513 event=NONE mode=STANDBY dsp_ms=293 cls_ms=6
+SCORES window=123 captured_ms=38284 rms=0.006143 go=0.5394 up=0.0740 stop=0.2500 unknown=0.1367 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=124 captured_ms=38794 rms=0.002570 go=0.3431 up=0.1551 stop=0.3010 unknown=0.2007 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=125 captured_ms=39034 rms=0.002392 go=0.2044 up=0.0648 stop=0.1163 unknown=0.6146 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=126 captured_ms=39289 rms=0.002855 go=0.0862 up=0.1688 stop=0.0436 unknown=0.7014 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=127 captured_ms=39544 rms=0.004935 go=0.0581 up=0.0557 stop=0.2479 unknown=0.6383 event=NONE mode=STANDBY dsp_ms=296 cls_ms=5
+SCORES window=128 captured_ms=40039 rms=0.006409 go=0.5425 up=0.0649 stop=0.2964 unknown=0.0962 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=129 captured_ms=40294 rms=0.008137 go=0.6339 up=0.0689 stop=0.1863 unknown=0.1108 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=130 captured_ms=40534 rms=0.010859 go=0.6124 up=0.0839 stop=0.2103 unknown=0.0934 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=131 captured_ms=40789 rms=0.013623 go=0.5359 up=0.0805 stop=0.1247 unknown=0.2589 event=NONE mode=STANDBY dsp_ms=297 cls_ms=5
+SCORES window=132 captured_ms=41284 rms=0.026778 go=0.4644 up=0.0048 stop=0.0753 unknown=0.4556 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=133 captured_ms=41539 rms=0.023772 go=0.0356 up=0.0049 stop=0.0413 unknown=0.9183 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=134 captured_ms=41794 rms=0.013000 go=0.5508 up=0.0165 stop=0.0557 unknown=0.3769 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=135 captured_ms=42034 rms=0.015904 go=0.1633 up=0.3617 stop=0.3358 unknown=0.1392 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=136 captured_ms=42289 rms=0.014891 go=0.7594 up=0.0320 stop=0.0131 unknown=0.1955 event=NONE mode=STANDBY dsp_ms=295 cls_ms=5
+SCORES window=137 captured_ms=42784 rms=0.031729 go=0.2150 up=0.6323 stop=0.0615 unknown=0.0912 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=138 captured_ms=43039 rms=0.035590 go=0.1146 up=0.0314 stop=0.0608 unknown=0.7932 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=139 captured_ms=43294 rms=0.042715 go=0.0823 up=0.0222 stop=0.5403 unknown=0.3552 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=140 captured_ms=43534 rms=0.024496 go=0.1309 up=0.0207 stop=0.0288 unknown=0.8195 event=NONE mode=STANDBY dsp_ms=297 cls_ms=5
+SCORES window=141 captured_ms=44044 rms=0.017086 go=0.4108 up=0.0240 stop=0.0789 unknown=0.4863 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=142 captured_ms=44284 rms=0.014904 go=0.3597 up=0.1162 stop=0.0169 unknown=0.5072 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=143 captured_ms=44539 rms=0.010518 go=0.0432 up=0.3789 stop=0.3061 unknown=0.2719 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=144 captured_ms=44794 rms=0.004592 go=0.0716 up=0.2259 stop=0.4951 unknown=0.2074 event=NONE mode=STANDBY dsp_ms=296 cls_ms=5
+SCORES window=145 captured_ms=45289 rms=0.005705 go=0.3002 up=0.3741 stop=0.0618 unknown=0.2638 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=146 captured_ms=45544 rms=0.005780 go=0.1728 up=0.1056 stop=0.0288 unknown=0.6928 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=147 captured_ms=45784 rms=0.007121 go=0.8896 up=0.0245 stop=0.0111 unknown=0.0748 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=148 captured_ms=46039 rms=0.008600 go=0.1982 up=0.1053 stop=0.0681 unknown=0.6283 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=149 captured_ms=46294 rms=0.008693 go=0.0867 up=0.1823 stop=0.3064 unknown=0.4246 event=NONE mode=STANDBY dsp_ms=294 cls_ms=5
+SCORES window=150 captured_ms=46789 rms=0.009598 go=0.8262 up=0.1006 stop=0.0398 unknown=0.0334 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=151 captured_ms=47044 rms=0.006322 go=0.5922 up=0.0471 stop=0.1874 unknown=0.1734 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=152 captured_ms=47284 rms=0.005802 go=0.5163 up=0.0473 stop=0.2520 unknown=0.1844 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=153 captured_ms=47539 rms=0.004093 go=0.5109 up=0.0649 stop=0.2503 unknown=0.1739 event=NONE mode=STANDBY dsp_ms=296 cls_ms=5
+SCORES window=154 captured_ms=48034 rms=0.003775 go=0.0589 up=0.0019 stop=0.0191 unknown=0.9200 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=155 captured_ms=48289 rms=0.003837 go=0.0347 up=0.0077 stop=0.2676 unknown=0.6900 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=156 captured_ms=48544 rms=0.003810 go=0.0427 up=0.0020 stop=0.7737 unknown=0.1816 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=157 captured_ms=48784 rms=0.003141 go=0.2289 up=0.0334 stop=0.6065 unknown=0.1312 event=NONE mode=STANDBY dsp_ms=293 cls_ms=6
+SCORES window=158 captured_ms=49039 rms=0.003640 go=0.5495 up=0.1818 stop=0.1724 unknown=0.0963 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=159 captured_ms=49534 rms=0.003583 go=0.4369 up=0.1320 stop=0.1118 unknown=0.3193 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=160 captured_ms=49789 rms=0.003575 go=0.2079 up=0.0012 stop=0.0010 unknown=0.7899 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=161 captured_ms=50044 rms=0.003098 go=0.0195 up=0.0068 stop=0.0096 unknown=0.9640 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=162 captured_ms=50284 rms=0.002952 go=0.0857 up=0.0311 stop=0.1770 unknown=0.7062 event=NONE mode=STANDBY dsp_ms=296 cls_ms=5
+SCORES window=163 captured_ms=50794 rms=0.003600 go=0.7102 up=0.1285 stop=0.0511 unknown=0.1102 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=164 captured_ms=51034 rms=0.003836 go=0.6719 up=0.0260 stop=0.0454 unknown=0.2567 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=165 captured_ms=51289 rms=0.004146 go=0.3556 up=0.1071 stop=0.1130 unknown=0.4243 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=166 captured_ms=51544 rms=0.003498 go=0.6125 up=0.0486 stop=0.0112 unknown=0.3277 event=NONE mode=STANDBY dsp_ms=297 cls_ms=5
+SCORES window=167 captured_ms=52039 rms=0.002381 go=0.5085 up=0.0383 stop=0.1473 unknown=0.3059 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=168 captured_ms=52294 rms=0.002547 go=0.4073 up=0.1651 stop=0.2505 unknown=0.1771 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=169 captured_ms=52534 rms=0.003410 go=0.4119 up=0.1333 stop=0.2001 unknown=0.2548 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=170 captured_ms=52789 rms=0.004069 go=0.3400 up=0.1154 stop=0.4484 unknown=0.0961 event=NONE mode=STANDBY dsp_ms=294 cls_ms=6
+SCORES window=171 captured_ms=53044 rms=0.006112 go=0.1208 up=0.2342 stop=0.1898 unknown=0.4551 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=172 captured_ms=53539 rms=0.005971 go=0.4929 up=0.0535 stop=0.3491 unknown=0.1045 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=173 captured_ms=53794 rms=0.005203 go=0.6108 up=0.1103 stop=0.1863 unknown=0.0925 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=174 captured_ms=54034 rms=0.006412 go=0.5141 up=0.0761 stop=0.2849 unknown=0.1250 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=175 captured_ms=54289 rms=0.006249 go=0.5608 up=0.0784 stop=0.2396 unknown=0.1212 event=NONE mode=STANDBY dsp_ms=296 cls_ms=5
+SCORES window=176 captured_ms=54784 rms=0.009521 go=0.5639 up=0.0541 stop=0.2755 unknown=0.1065 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=177 captured_ms=55039 rms=0.008575 go=0.5735 up=0.0448 stop=0.2628 unknown=0.1189 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=178 captured_ms=55294 rms=0.008080 go=0.3374 up=0.0399 stop=0.0897 unknown=0.5330 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=179 captured_ms=55534 rms=0.012529 go=0.1074 up=0.0202 stop=0.3423 unknown=0.5301 event=NONE mode=STANDBY dsp_ms=296 cls_ms=5
+SCORES window=180 captured_ms=56044 rms=0.011846 go=0.6225 up=0.0068 stop=0.0117 unknown=0.3590 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=181 captured_ms=56284 rms=0.016894 go=0.3201 up=0.0197 stop=0.0056 unknown=0.6546 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=182 captured_ms=56539 rms=0.035413 go=0.5965 up=0.0312 stop=0.0164 unknown=0.3558 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=183 captured_ms=56794 rms=0.045350 go=0.4270 up=0.0712 stop=0.2278 unknown=0.2740 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+SCORES window=184 captured_ms=57034 rms=0.045197 go=0.7539 up=0.0643 stop=0.0559 unknown=0.1259 event=NONE mode=STANDBY dsp_ms=294 cls_ms=5

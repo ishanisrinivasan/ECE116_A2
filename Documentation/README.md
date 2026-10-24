@@ -1,11 +1,31 @@
 # A2 submission: Voice-controlled timer
 
-Replace each prompt with your own evidence. Keep the headings.
-
 ## System summary
 
-State what the completed system does. Identify the classifier output, the policy you implemented,
-and the A1 timer behavior that remains unchanged.
+The completed system is a voice-controlled countdown timer on a XIAO ESP32-S3 Sense. The onboard
+PDM microphone fills a one-second, 16 kHz input window that advances every 250 ms. For each window,
+the fixed-release keyword model (`ece116-keyword-commands` 1.0.0) returns four softmax scores in the
+order `go`, `up`, `stop`, `unknown`.
+
+`command_policy.cpp` turns that score stream into at most one command event per utterance. It
+accepts a target label whose argmax score is at least 0.90. It then latches, and rearms only when
+all three target scores are below 0.55 after at least 1000 ms, or when 1500 ms have passed.
+
+Each accepted event is passed to the unchanged A1 timer as an existing A1 event:
+
+- `UP` becomes `TAP`, which adds 10 s.
+- `GO` becomes `COMMIT`, which starts the countdown.
+- `STOP` becomes `CANCEL`, which clears to `STANDBY`.
+
+The A1 state machine is unchanged:
+
+- the `STANDBY` → `ADDING` → `COUNTDOWN` → `DONE` modes;
+- 10 s per tap;
+- the 2 s `DONE` alert with all LEDs blinking;
+- the automatic return to `STANDBY`.
+
+The only configuration change is in `Challenge_2.ino`, which sets `entryTapsRequired` to 1 so that
+a single `up` enters `ADDING`.
 
 ## Model artifact
 
@@ -370,26 +390,204 @@ timeout in `student_maximum_latch`.
 
 ## Integrated system
 
-Record board, core, PSRAM, LED, and command-to-A1 adapter settings. Report the required timer
-sequence, five attempts per target command, and 10 non-command speech attempts. Include failed
-attempts, classifying each as missed, wrong, repeated, or false when applicable. Add a
-representative Serial excerpt with scores, event, mode, remaining seconds, and timing. Link
-`Fig/voice_timer_demo.mp4`.
+| Setting | Value |
+|---|---|
+| Board | Seeed Studio XIAO ESP32-S3 Sense (`XIAO_ESP32S3`), onboard PDM microphone |
+| Core and IDE | `esp32` by Espressif Systems 3.3.10, Arduino IDE 2.3.10 |
+| PSRAM | OPI PSRAM (required for the audio buffers; see **Build and reproduction**) |
+| USB CDC On Boot | Enabled, Serial Monitor at 115200 baud |
+| LEDs | Green D1/GPIO2 = `STANDBY`, amber D2/GPIO3 = `ADDING`, red D3/GPIO4 = `COUNTDOWN`; all three blink every 200 ms in `DONE` |
+| Command-to-A1 adapter | `a1TimerEventForCommand()`: `UP` → `COVER_EVENT_TAP`, `GO` → `COVER_EVENT_COMMIT`, `STOP` → `COVER_EVENT_CANCEL` |
+| A1 timer | `makeTimerConfig()` unchanged (800 ms tap window, 10 s per tap, 2000 ms `DONE`); `Challenge_2.ino` sets `entryTapsRequired = 1` |
+| Policy | accept 0.90, release 0.55, minimum latch 1000 ms, maximum latch 1500 ms (printed at every boot) |
 
-Use the `window` and `captured_ms` fields to associate each accepted or rejected score row with the
-corresponding spoken attempt.
+**Test conditions:** one speaker (the author), about 25 cm from the board, in the same indoor room
+with some background noise as the local validation set, on October 23, 2026. Each run starts at a
+board reset.
+
+The labeled log is `Documentation/a2_c5_serial_log.txt`, with Runs A–D. In the log, the `event=` and
+`status_ms=` lines for an accepted window print just before that window's `SCORES` row. The sketch
+updates the timer first and reports the scores afterwards.
+
+**Replay check:** every `SCORES` row in Runs A–D was replayed through the rearm rules in
+**Operating policy**, using `captured_ms` as the time. The replay produces exactly the logged
+events: 25 accepted events in 626 windows, with no mismatches.
+
+### Run A: required C5 sequence
+
+| Step | Spoken | Accepted window (`window`, `captured_ms`, score) | Timer output | Result |
+|---|---|---|---|---|
+| 1 | (boot) | | `status_ms=18 mode=STANDBY`; green on | Pass |
+| 2 | `up`, `up` | 41, 17539, up 0.9317; 51, 20794, up 0.9484 | `ADDING seconds=10`, then `ADDING seconds=20`; amber on | Pass |
+| 3 | `go` | 62, 24034, go 0.9444 | `COUNTDOWN seconds=20`, then 19, 18 … 9; red on | Pass |
+| 4 | Sentence with no command word | None from window 63 to 100 | Countdown continued without a transition | Pass |
+| 5 | `stop` | 101, 36034, stop 0.9127 | `status_ms=36516 mode=STANDBY`; green on | Pass |
+| 6 | `up`, `go`, then wait | 111, 39034, up 0.9915; 122, 42544, go 0.9319 | `COUNTDOWN seconds=10` … 1, `status_ms=53119 mode=DONE`, `status_ms=55270 mode=STANDBY` (2151 ms later) | Pass |
+| 7 | `up`, then `up` again after rearm | 214, 70789, up 0.9956; 229, 75544, up 0.9590 | `ADDING seconds=10`, then `ADDING seconds=20` | Pass |
+
+In step 3, window 63 (go 0.9657) is still above the accept threshold, and it is suppressed by the
+latch. In step 6, `DONE` blinked all three LEDs, and the board returned to `STANDBY` on its own. In
+step 7, the latch from window 214 rearmed by normal release at window 217 (1005 ms). The later `up`
+then registered. Run A also ends with `stop` (window 237) and one more `up` (window 265).
+
+### Run B: five attempts per target command
+
+Five `up` → `go` → `stop` cycles. Each cell gives the accepted window, its `captured_ms`, the
+accepted score, and the timer line it produced.
+
+| Cycle | `up` | `go` | `stop` |
+|---|---|---|---|
+| 1 | 13, 4534, 0.9736 → `ADDING 10` | 27, 8794, 0.9478 → `COUNTDOWN 10` | 33, 10789, 0.9985 → `STANDBY` |
+| 2 | 41, 13294, 0.9825 → `ADDING 10` | 56, 17794, 0.9860 → `COUNTDOWN 10` | 62, 19789, 1.0000 → `STANDBY` |
+| 3 | 72, 22789, 0.9287 → `ADDING 10` | 78, 24544, 0.9125 → `COUNTDOWN 10` | 86, 27034, 0.9994 → `STANDBY` |
+| 4 | 94, 29539, 0.9371 → `ADDING 10` | 101, 31534, 0.9604 → `COUNTDOWN 10` | 107, 33544, 1.0000 → `STANDBY` |
+| 5 | 114, 35539, 0.9947 → `ADDING 10` | 119, 37294, 0.9894 → `COUNTDOWN 10` | 125, 39034, 0.9937 → `STANDBY` |
+
+All 15 attempts produced the intended event once. The LEDs followed the logged mode each time:
+amber after `up`, red after `go`, and green after `stop`.
+
+Twelve other Run B windows scored at least 0.90 for a target while latched, and each one returned
+`NONE`. For example, cycle 4's `up` stayed above 0.90 for windows 94, 95, and 96 and produced one
+event.
+
+The 15 rearms split into 10 normal releases and 5 maximum-latch timeouts (windows 67, 77, 83, 99,
+and 106). The timeouts happened because the room's background `go` score stayed at or above 0.55
+after the word ended.
+
+The cycle 4 `stop` shows the timeout path directly. Window 106 scored stop 0.9985, but it was the
+window that rearmed the latch from the `go` at window 101 (1755 ms), so it emitted nothing. The
+next window, 107, accepted `STOP` about 255 ms later.
+
+### Run D: 10 non-command phrases
+
+Spoken in `STANDBY`, a few seconds apart: "hello there", "what time is it", "good morning", "turn on the
+lights", "thank you very much", "I like music", "where is the library", "banana bread", "seven eight
+nine", and "see you later".
+
+All 184 windows (`captured_ms` 1038–57034) returned `event=NONE`, and the mode stayed `STANDBY`,
+with green on. No target score reached 0.90. The closest were up 0.8996 (window 33,
+`captured_ms=10789`), go 0.8896 (window 147), go 0.8865 (window 59), and stop 0.7737 (window 156).
+The `up` near-miss was 0.0004 below the threshold.
+
+Run C is a board reset with no speech (8 windows, no events).
+
+### Attempt summary (Runs B and D)
+
+| Intended | Attempts | Correct | Missed | Wrong | Repeated | False |
+|---|---:|---:|---:|---:|---:|---:|
+| `up` | 5 | 5 | 0 | 0 | 0 | 0 |
+| `go` | 5 | 5 | 0 | 0 | 0 | 0 |
+| `stop` | 5 | 5 | 0 | 0 | 0 | 0 |
+| Non-command speech | 10 | 10 (no event) | – | – | – | 0 |
+
+No attempt in the structured runs failed.
+
+Before these runs, the system was also tested without structure, with the spoken words not logged
+(`Documentation/a2_c5_bringup_log.txt`, 14 boots). Those boots accepted 14 `GO` and 7 `STOP`
+events while the timer was in `STANDBY`, mostly during long idle stretches (boots 11 and 14). A1
+ignores `COMMIT` and `CANCEL` in `STANDBY`, so none of these events changed the timer state. They
+are not counted above because the intended word is unknown. If no command was spoken, each is a
+false policy event; see **Limitations**.
+
+### Representative Serial excerpt (Run B, cycle 4)
+
+```text
+SCORES window=93 captured_ms=29284 rms=0.019505 go=0.3026 up=0.6416 stop=0.0177 unknown=0.0382 event=NONE mode=STANDBY dsp_ms=293 cls_ms=5
+event=UP
+status_ms=29930 mode=ADDING seconds=10
+SCORES window=94 captured_ms=29539 rms=0.019760 go=0.0192 up=0.9371 stop=0.0425 unknown=0.0012 event=UP mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=95 captured_ms=29794 rms=0.018108 go=0.0017 up=0.9117 stop=0.0799 unknown=0.0066 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=96 captured_ms=30034 rms=0.013692 go=0.0110 up=0.9784 stop=0.0025 unknown=0.0082 event=NONE mode=ADDING dsp_ms=296 cls_ms=5
+SCORES window=97 captured_ms=30544 rms=0.026481 go=0.7142 up=0.0948 stop=0.1376 unknown=0.0533 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=98 captured_ms=30784 rms=0.025101 go=0.7550 up=0.0446 stop=0.1402 unknown=0.0602 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=99 captured_ms=31039 rms=0.028881 go=0.8119 up=0.0341 stop=0.1003 unknown=0.0537 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+SCORES window=100 captured_ms=31294 rms=0.031102 go=0.7097 up=0.0281 stop=0.0593 unknown=0.2029 event=NONE mode=ADDING dsp_ms=293 cls_ms=5
+event=GO
+status_ms=32083 mode=COUNTDOWN seconds=10
+SCORES window=101 captured_ms=31534 rms=0.019486 go=0.9604 up=0.0033 stop=0.0044 unknown=0.0319 event=GO mode=COUNTDOWN dsp_ms=294 cls_ms=5
+SCORES window=102 captured_ms=32044 rms=0.012573 go=0.8450 up=0.0059 stop=0.0078 unknown=0.1413 event=NONE mode=COUNTDOWN dsp_ms=293 cls_ms=5
+SCORES window=103 captured_ms=32284 rms=0.012157 go=0.1874 up=0.6013 stop=0.0776 unknown=0.1338 event=NONE mode=COUNTDOWN dsp_ms=293 cls_ms=5
+SCORES window=104 captured_ms=32539 rms=0.008318 go=0.6152 up=0.1114 stop=0.1854 unknown=0.0880 event=NONE mode=COUNTDOWN dsp_ms=293 cls_ms=5
+SCORES window=105 captured_ms=32794 rms=0.007731 go=0.5938 up=0.0740 stop=0.2139 unknown=0.1182 event=NONE mode=COUNTDOWN dsp_ms=297 cls_ms=5
+status_ms=33313 mode=COUNTDOWN seconds=9
+SCORES window=106 captured_ms=33289 rms=0.012135 go=0.0003 up=0.0011 stop=0.9985 unknown=0.0002 event=NONE mode=COUNTDOWN dsp_ms=293 cls_ms=5
+event=STOP
+status_ms=33926 mode=STANDBY
+SCORES window=107 captured_ms=33544 rms=0.012179 go=0.0000 up=0.0000 stop=1.0000 unknown=0.0000 event=STOP mode=STANDBY dsp_ms=293 cls_ms=5
+```
+
+Here is what the excerpt shows:
+
+- **Window 94** accepts `UP`.
+- **Windows 95–96** score up above 0.90, but the latch suppresses them.
+- **Window 99** times out the latch (1500 ms). The release rule was blocked because background
+  `go` stayed above 0.55.
+- **Window 101** accepts `GO`, and the countdown starts at 10 s and then shows 9.
+- **Window 106** times out the `GO` latch. It is the rearming window, so it emits nothing.
+- **Window 107** accepts `STOP`.
+
+### Demonstration video
+
+[`Fig/voice_timer_demo.mp4`](Fig/voice_timer_demo.mp4) shows the LEDs and the Serial Monitor
+together while voice commands drive the timer.
 
 ## Timing
 
-Report the configured audio-window duration, configured capture stride, model-reported DSP time,
-model-reported classifier time, and physically observed command-to-visible-response latency. Name
-the source of each value. For physical latency, state that you measured from audible command onset
-to the first matching LED or reported timer-state change, and describe the video timeline used.
+| Quantity | Value | Kind and source |
+|---|---|---|
+| Input window | 1000 ms (16,000 samples at 16 kHz) | Configured: `EI_CLASSIFIER_RAW_SAMPLE_COUNT`, `kSampleCount` in `ece116_audio.h` |
+| Capture stride | 250 ms between the starts of consecutive windows (4,000-sample blocks) | Configured: `capture_stride_ms` in `artifact.json`, `kBlockSamples` in `ece116_audio.h` |
+| DSP (feature extraction) | 293–297 ms per window | Model-reported `dsp_ms` (`result.timing.dsp`), every window in Runs A–D |
+| Classifier | 5–6 ms per window | Model-reported `cls_ms` (`result.timing.classification`), same windows |
+| Spacing of processed windows | 240–257 ms, with a 495–510 ms gap about once every five windows | Tool output: differences between consecutive `captured_ms` values |
+| Window complete → timer update | 307–549 ms (median 424 ms) over the 15 Run B events | Tool output: `status_ms − captured_ms` for each accepted window |
+| Displayed-second updates | Every 919–1232 ms during countdown | Tool output: consecutive `status_ms` countdown lines |
+| Command onset → first LED change | See below | Physical observation, `Fig/voice_timer_demo.mp4` |
+
+These numbers measure different things:
+
+- **The configured values** describe the input. Each window holds the last 1000 ms of audio. A new
+  window is ready every 250 ms. `captured_ms` is set when the window's last block arrives, so it
+  marks the window's end.
+- **The model-reported times** are compute only. DSP plus classification takes about 300 ms per
+  window, which is longer than the 250 ms stride. So the loop always takes the newest window and
+  skips about one in six, and that causes the roughly 500 ms gaps in `captured_ms`.
+- **The timer is updated only between inferences.** So an accepted window reaches the timer
+  307–549 ms after it was captured, and the displayed seconds change in steps of about 0.9–1.2 s,
+  not exactly 1 s.
+- **None of these is the latency a person sees.** That latency also includes the time for enough of
+  the word to enter a window to push its score past 0.90.
+
+**Physical latency:** measured from the audible onset of each command to the first matching LED
+change, on the timeline of `Fig/voice_timer_demo.mp4`. This is an observed end-to-end delay, not
+model execution time.
 
 ## Limitations
 
-Name at least two conditions not supported by your benchmark, local validation, or integrated
-system evidence. Describe one next test that would reduce an important uncertainty.
+**Speakers and acoustic conditions.** Every local and integrated-system result comes from one
+speaker, at about 25 cm, in one indoor room, on one evening. The benchmark's 236 speakers are not
+this setup. Nothing here supports other speakers or accents, distances beyond about 25 cm, louder
+or different noise (music, TV, several people talking), or the board inside an enclosure. On the
+local set, the 0.90 operating point reached only 0.842 precision, against 0.973 on the benchmark.
+
+**Long idle periods and ordinary conversation.** The integrated tests cover 10 short non-command
+phrases (no false events) and short command cycles. They do not measure a false-event rate over
+minutes or hours. Three observations suggest the margin is thin:
+
+- In Run D, a non-command phrase drove `up` to 0.8996, 0.0004 below the threshold.
+- The quiet room scores `go` around 0.46–0.58 (median of the low-RMS windows in Runs D and B). As a
+  result, 5 of the 15 Run B rearms needed the maximum-latch timeout.
+- The unstructured bring-up boots accepted 14 `GO` and 7 `STOP` events in `STANDBY`. The timer
+  ignored them, but a false `UP` in `STANDBY` would start `ADDING`, and a false `GO` in `ADDING`
+  would start an unintended countdown.
+
+Words that contain command sounds, such as "upload", "going", "stopwatch", or "no", were not tested.
+
+**Next test:** leave the board in `STANDBY` for 30 minutes of ordinary conversation and TV audio at
+the usual distance. Record the room audio at the same time, so each logged event can be matched to
+what was said through `captured_ms`. Then count false events per hour for each label, and replay
+the same logged scores at accept thresholds 0.90 and 0.95. That would measure the false-event rate
+and its cost in recall directly, which neither the benchmark windows nor 10 phrases can show.
 
 ## Build and reproduction
 
@@ -441,7 +639,40 @@ upload the notebook, then the complete package ZIP when the setup cell asks.
 3. From `Python/`, `python check_command_policy.py` compiles `command_policy.cpp` with the host
    compiler (g++ 13.3.0 here, on Linux; not the Arduino ESP32 compiler) and prints the named checks.
 
-### Still to record
+### Challenge sketch and integrated-system run
 
-Add the `Challenge_2.ino` compile result, the integrated-system steps, and the list of every
-submitted file.
+1. Open `Arduino/Challenge_2/` with the six model files in `src/ECE116_A2_Keyword/`. Apply the
+   **Arduino build** settings, and select OPI PSRAM before compiling. A build made before OPI PSRAM
+   was selected booted with `FAIL audio setup: PSRAM unavailable`. Rebuilding and re-uploading with
+   OPI PSRAM fixed it.
+2. Verify and upload `Challenge_2.ino`. It compiled and ran with these settings, and every run in
+   `a2_c5_serial_log.txt` starts with its boot banner and the policy line `policy accept=0.90
+   release=0.55 minimum_latch_ms=1000 maximum_latch_ms=1500`.
+3. Wire the LEDs as in **Integrated system**. Open Serial Monitor at 115200 baud and tap `RESET`.
+   The board boots to `STANDBY` with the green LED on.
+4. Speak from about 25 cm. Run the C5 sequence (Run A), five `up` → `go` → `stop` cycles (Run B),
+   and the 10 non-command phrases in `STANDBY` (Run D). Copy the Serial Monitor output into the log
+   after each run.
+5. To check the policy against the log, replay each run's `SCORES` rows through the rules in
+   **Operating policy** with `captured_ms` as the time. The emitted events should match the
+   `event=` field.
+
+### Submitted files
+
+| Path | Contents |
+|---|---|
+| `Arduino/Lab_2_1/Lab_2_1.ino` | Lab sketch with the completed model calls |
+| `Arduino/Lab_2_1/src/ECE116_A2_Keyword/` | Six fixed-release model files |
+| `Arduino/Challenge_2/Challenge_2.ino` | Supplied integration sketch, unchanged |
+| `Arduino/Challenge_2/command_policy.cpp` | Completed command policy |
+| `Arduino/Challenge_2/command_policy.h`, `a1_timer_logic.cpp`, `a1_timer_logic.h` | Supplied, unchanged |
+| `Arduino/Challenge_2/src/ECE116_A2_Keyword/` | The same six model files |
+| `Python/Lab_2_2_Evaluation.ipynb` | Executed with saved outputs |
+| `Python/Challenge_2_Policy.ipynb` | Executed with saved outputs |
+| `Python/check_command_policy.py`, `eval_lib.py`, CSV files | Supplied, unchanged |
+| `Documentation/README.md` | This report |
+| `Documentation/a2_local_trials.txt` | 40 local one-second trials (Lab) |
+| `Documentation/a2_c5_serial_log.txt` | Integrated-system Runs A–D |
+| `Documentation/a2_c5_bringup_log.txt` | Unstructured bring-up boots, words not logged |
+| `Documentation/Fig/a2_confusion.png`, `a2_local_confusion.png`, `a2_threshold_sweep.png` | Notebook figures |
+| `Documentation/Fig/voice_timer_demo.mp4` | Integrated-system demonstration video |
