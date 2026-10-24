@@ -9,9 +9,59 @@ and the A1 timer behavior that remains unchanged.
 
 ## Model artifact
 
-Record the repository URL, artifact ID, release tag, model/library version, sample rate, one-second
-input size, and label order. State the roles of the metadata, parameter, interface, and
-implementation files. Explain what `pcm16_signal_from_buffer()` and `run_classifier()` each do.
+| Field | Value |
+|---|---|
+| Repository | <https://github.com/ejaywang/ece116-tinyml-models> |
+| Artifact ID | `ece116-keyword-commands` |
+| Release tag | `keyword-commands-v1.0.0` (commit `e776497`) |
+| Release asset | `ece116-keyword-arduino-v1.0.0.zip` |
+| Model version | 1.0.0 (`artifact.json`, `MODEL_CARD.md`) |
+| Library version | 1.0.0 (`library.properties`, library name `ECE116 A2 Keyword`) |
+| Sample rate | 16 kHz (`EI_CLASSIFIER_FREQUENCY 16000`) |
+| One-second input | 16,000 signed 16-bit mono PCM samples (`EI_CLASSIFIER_RAW_SAMPLE_COUNT 16000`) |
+| Capture stride | 250 ms between the starts of consecutive windows (`capture_stride_ms` in `artifact.json`) |
+| Label order | `go`, `up`, `stop`, `unknown` |
+| Target | XIAO ESP32-S3 Sense, Espressif `esp32` core 3.3.10, OPI PSRAM |
+
+The six source files were copied unchanged into `src/ECE116_A2_Keyword/` in both
+`Arduino/Lab_2_1/` and `Arduino/Challenge_2/`. Every copy matches the SHA-256 hash recorded for it in
+the release's `artifact.json`.
+
+### File roles
+
+| Role | File | Contents |
+|---|---|---|
+| Release record | `artifact.json` | Artifact ID, version, tag, target board, input/output contract, and a SHA-256 hash for every file. It is not compiled. |
+| Metadata | `model_metadata.h` | The shape contract the sketch compiles against: 16 kHz sample rate, 16,000 raw samples per input, 512 network inputs, and 4 labels. It contains no learned values. |
+| Parameters | `model_params.h` | The learned network weights and biases: `KW_W1` (512 × 64), `KW_B1` (64), `KW_W2` (64 × 4), and `KW_B2` (4). It also holds the fixed preprocessing constants: the Hann window, the 32-band mel filterbank, and the per-feature normalization mean and standard deviation. |
+| Model interface | `ece116_keyword.h` | The types and calls the sketch uses: `signal_t`, `ei_impulse_result_t`, the error codes, `pcm16_signal_from_buffer()`, and `run_classifier()`. |
+| Model implementation | `ece116_keyword.cpp` | The code behind that interface. It converts 16,000 samples into 512 features (pre-emphasis, 512-sample Hann frames with a 256-sample hop, FFT, 32 log-mel bands pooled into 16 time bins, normalization), then runs a 512 → 64 ReLU → 4 softmax network. |
+| Audio interface | `ece116_audio.h` | The `ECE116Audio` class: `begin()`, `copyLatestWindow()`, and `lastError()`. |
+| Audio implementation | `ece116_audio.cpp` | Starts the PDM microphone (clock GPIO42, data GPIO41) at 16 kHz and runs a background capture task. It keeps a one-second ring buffer in PSRAM and publishes a new window, with its RMS level and capture time, after each 4,000-sample (250 ms) block. |
+
+Metadata tells the sketch how large the input and output are. Parameters decide what the model
+predicts. Replacing `model_params.h` with differently trained weights would change the scores
+without changing any interface the sketch depends on.
+
+### Model calls
+
+`pcm16_signal_from_buffer(trialAudioWindow, EI_CLASSIFIER_RAW_SAMPLE_COUNT, &signal)` prepares the
+recorded audio as model input. It does not run the model or copy the samples. It records the buffer
+pointer and length, computes the window's mean (DC offset), and installs a read callback in
+`signal`. When the model reads through that callback, each 16-bit sample is returned as a float with
+the mean removed and scaled by 1/32768 to the range [-1, 1). It returns 0 on success and -1 for a
+null buffer or signal.
+
+`run_classifier(&signal, &result, false)` performs inference. It rejects an input whose length is not
+16,000 samples (`EI_IMPULSE_ERROR_SHAPES_DONT_MATCH`), reads the samples through the callback,
+computes the 512 features, and evaluates the network. It writes four softmax scores into
+`result.classification[]` in `go`, `up`, `stop`, `unknown` order, and the feature-extraction and
+classifier times in milliseconds into `result.timing.dsp` and `result.timing.classification`. The
+`debug` argument is ignored.
+
+The output is a score vector, not a command. The four scores sum to about 1 and are relative
+evidence among the four classes. The Challenge policy decides which score vectors become timer
+events.
 
 ## Understanding one example
 
