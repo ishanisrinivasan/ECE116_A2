@@ -8,7 +8,7 @@
 CommandPolicyConfig makeCommandPolicyConfig() {
   CommandPolicyConfig config{};  // Creates the policy returned to Challenge_2.ino.
 
-  config.acceptThreshold = 1.01f;    // TODO C3a: replace 1.01f with ACCEPT_THRESHOLD from your notebook.
+  config.acceptThreshold = 0.90f;    // ACCEPT_THRESHOLD from Challenge_2_Policy.ipynb (97% command precision).
   config.releaseThreshold = 0.55f;   // Requires target scores to fall below this value before rearming.
   config.minimumLatchMs = 1000;      // Suppresses predictions for at least one complete input-window duration.
   config.maximumLatchMs = 1500;      // Bounds lockout if target scores never reach normal release.
@@ -117,9 +117,9 @@ CommandEvent updateCommandPolicy(CommandPolicyState *state,
       }
     }
     uint32_t commandHasBeenLatchedForMs = nowMs - state->commandLatchedMs;  // Uses rollover-safe unsigned subtraction.
-    bool minimumLatchTimeHasElapsed = false;                                // TODO C3b: compare elapsed time with minimumLatchMs.
-    bool maximumLatchTimeHasElapsed = false;                                // TODO C3c: compare elapsed time with maximumLatchMs.
-    bool normalReleaseIsReady = false;                                      // TODO C3d: combine quiet target scores with minimum latch time.
+    bool minimumLatchTimeHasElapsed = commandHasBeenLatchedForMs >= config.minimumLatchMs;  // At least one full input window has passed.
+    bool maximumLatchTimeHasElapsed = commandHasBeenLatchedForMs >= config.maximumLatchMs;  // Fail-safe bound on a stuck latch.
+    bool normalReleaseIsReady = everyTargetCommandScoreIsBelowReleaseThreshold && minimumLatchTimeHasElapsed;  // Utterance has ended.
 
     if (normalReleaseIsReady || maximumLatchTimeHasElapsed) {  // Uses score release normally and timeout only as a fail-safe.
       state->commandIsLatched = false;                       // Allows a later window to become a new event.
@@ -141,8 +141,8 @@ CommandEvent updateCommandPolicy(CommandPolicyState *state,
   CommandEvent acceptedCommandEvent = commandEventForClassIndex(largestScoreClassIndex);  // Converts the accepted class into an event.
   if (acceptedCommandEvent == COMMAND_EVENT_NONE) return COMMAND_EVENT_NONE;              // Rejects an invalid class-to-event mapping.
 
-  state->commandIsLatched = false;  // TODO C3e: mark the accepted utterance as latched.
-  state->commandLatchedMs = 0;      // TODO C3f: record when the accepted command fired.
+  state->commandIsLatched = true;   // Suppresses adjacent windows from this accepted utterance.
+  state->commandLatchedMs = nowMs;  // Starts the minimum- and maximum-latch timers from this event.
 
   return acceptedCommandEvent;  // Emits exactly one event for this accepted window.
 }
