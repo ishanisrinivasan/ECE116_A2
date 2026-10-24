@@ -112,17 +112,16 @@ void collectOneSecondTrial() {
 
   signal_t signal = {};
   ei_impulse_result_t result = {};
-  int modelInputStatus = -1;  // TODO L3a: Replace -1 with pcm16_signal_from_buffer()
-                              // using trialAudioWindow, the required sample count, and &signal.
+  int modelInputStatus = pcm16_signal_from_buffer(trialAudioWindow, EI_CLASSIFIER_RAW_SAMPLE_COUNT, &signal);
   if (modelInputStatus != 0) {
     Serial.println("MODEL_INPUT_ERROR: connect the recorded PCM window to signal");
     return;
   }
 
   uint32_t inferenceStartedMs = millis();
-  EI_IMPULSE_ERROR inferenceError = EI_IMPULSE_INFERENCE_ERROR;  // TODO L3b: Replace the
-                                                                 // placeholder with
-                                                                 // run_classifier(&signal,&result,false).
+  
+  EI_IMPULSE_ERROR inferenceError = run_classifier(&signal, &result, false);
+
   uint32_t inferenceWallMs = millis() - inferenceStartedMs;
   if (inferenceError != EI_IMPULSE_OK) {
     Serial.print("INFERENCE_ERROR code=");
