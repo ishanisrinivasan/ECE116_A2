@@ -65,9 +65,33 @@ events.
 
 ## Understanding one example
 
-Include one complete `TRIAL_RESULT` from L4. Identify its true label, four-score output, argmax
-label, and whether the argmax is correct. Explain why ground truth and model output must remain
-separate.
+Trial 4 of the L4 trials:
+
+```text
+TRIAL_RESULT trial_id=4 true_label=unknown recording_ms=1006 rms=0.017803 go=0.7901 up=0.0164 stop=0.0986 unknown=0.0949 argmax_index=0 argmax_label=go dsp_ms=293 classifier_ms=5 inference_wall_ms=298
+```
+
+| Field | Value |
+|---|---|
+| True label | `unknown`: the sketch assigned this label before recording, and a non-command word was spoken |
+| Score vector (`go`, `up`, `stop`, `unknown`) | 0.7901, 0.0164, 0.0986, 0.0949 (sum 1.0000) |
+| Argmax label | `go` (index 0) |
+| Argmax correct? | No. A non-command word was classified as `go`. |
+| Input level | RMS 0.0178 over the one-second window |
+| Processing | 293 ms feature extraction (`dsp_ms`) + 5 ms classifier = 298 ms wall time |
+
+The true label records what the trial was set up to contain. The sketch fixes it before the
+recording starts, and it does not depend on anything the model computes. The four scores and the
+argmax are the model's measurement of that recording. They are relative evidence among four
+classes, not a statement of what was said.
+
+Keeping the two separate is what makes this error visible. If the model's output were used as the
+label, this row would read as a correct `go` and would disappear from every error count. Evaluation
+compares the two fields instead, so this trial adds one count to the (true `unknown`, predicted
+`go`) cell of the confusion matrix. The comparison also shows the cost. If the argmax alone were
+treated as a command, this non-command word would have started the countdown.
+
+For contrast, trial 3 (true `stop`, `stop` = 0.9726) is a correct, confident prediction.
 
 ## Provided benchmark
 
