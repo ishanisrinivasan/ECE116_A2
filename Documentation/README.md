@@ -130,5 +130,43 @@ system evidence. Describe one next test that would reduce an important uncertain
 
 ## Build and reproduction
 
-Give the exact steps and versions needed to obtain and place the fixed model release, run both
-notebooks, compile both sketches, and reproduce the evidence. List every submitted file.
+### Model release
+
+1. Download `ece116-keyword-arduino-v1.0.0.zip` from the fixed `keyword-commands-v1.0.0` release:
+   <https://github.com/ejaywang/ece116-tinyml-models/releases/download/keyword-commands-v1.0.0/ece116-keyword-arduino-v1.0.0.zip>.
+   Do not substitute a later release.
+2. Extract the ZIP outside the A2 package.
+3. Copy the six files from the extracted `arduino/ECE116_A2_Keyword/src/` folder, unchanged, into
+   both sketch-local folders:
+   - `Arduino/Lab_2_1/src/ECE116_A2_Keyword/`
+   - `Arduino/Challenge_2/src/ECE116_A2_Keyword/`
+
+   The files are `ece116_audio.cpp`, `ece116_audio.h`, `ece116_keyword.cpp`, `ece116_keyword.h`,
+   `model_metadata.h`, and `model_params.h`. The model is not installed as a global Arduino
+   library, so each sketch carries its own copy of the dependency.
+4. Confirm each copy against the SHA-256 hash recorded for it in the release's `artifact.json`.
+   All 12 copies match.
+
+### Arduino build
+
+| Setting | Value |
+|---|---|
+| Board package | `esp32` by Espressif Systems, version 3.3.10 |
+| Board | `XIAO_ESP32S3` (Seeed Studio XIAO ESP32-S3 Sense) |
+| PSRAM | Tools > PSRAM > OPI PSRAM |
+| Serial Monitor | 115200 baud |
+| Upload port | The board's USB modem port (`/dev/cu.usbmodem1101` on the Mac used here) |
+
+Open the sketch folder in Arduino IDE, apply the settings above, and click Verify. `Lab_2_1.ino`
+compiled with the model source in place: "Sketch uses 322457 bytes (9%) of program storage space"
+and "Global variables use 22340 bytes (6%) of dynamic memory."
+
+If the board port is missing or an upload cannot connect, close Serial Monitor, hold `BOOT`, tap
+and release `RESET`, release `BOOT`, select the new USB modem port, and upload again. Tap `RESET`
+if the uploaded sketch does not start.
+
+### Still to record
+
+Add the notebook environment (Colab or local Jupyter), the policy self-check environment, the
+`Challenge_2.ino` compile result, the steps to reproduce each piece of evidence, and the list of
+every submitted file.
